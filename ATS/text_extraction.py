@@ -6,3 +6,11 @@ this file deals with the
 4.Text Normalization Layer
 5.Return Clean Raw Text String
 '''
+
+import pymupdf
+import pymupdf.layout  
+import pymupdf4llm
+import json
+
+class TextExtraction:
+    def __init__(self):
