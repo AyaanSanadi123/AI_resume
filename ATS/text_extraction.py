@@ -2,7 +2,6 @@ import os
 import json
 import tempfile
 import pymupdf
-#import pymupdf.layout  
 import pymupdf4llm
 import docx  
 import numpy as np
@@ -10,6 +9,7 @@ import io
 from fastapi import HTTPException, UploadFile
 from paddleocr import PaddleOCR
 from PIL import Image
+
 # ------------------------------------------------------------------
 # Singleton / Lazy Loader for PaddleOCR
 # ------------------------------------------------------------------
@@ -66,7 +66,7 @@ class TextExtraction:
 
                             box_lines = []
                             for line in box.get("textlines", []):
-                                # FIX: Join spans with explicit spaces to prevent "sticky text" (e.g., "VisionJan")
+                                # FIX: Join spans with explicit spaces to prevent "sticky text"
                                 spans_text = [
                                     span.get("text", "").strip() 
                                     for span in line.get("spans", []) 
@@ -103,7 +103,9 @@ class TextExtraction:
                                     })
                                     full_text_stream.append(text)
 
-           
+            # -------------------------------------------------------------
+            # BRANCH B: Scanned / Flattened PDF -> Tier 3 (PaddleOCR)
+            # -------------------------------------------------------------
             if not full_text_stream:
                 print(f"⚠️ Triggering Tier 3 (PaddleOCR Engine) for {self.filename}...")
                 ocr_engine = get_paddle_ocr()
@@ -117,11 +119,41 @@ class TextExtraction:
                     # 2. Execute PaddleOCR inference
                     results = ocr_engine.ocr(img_np)
 
-                    if results and results[0]:
-                        page_lines = []
-                        for line in results[0]:
+                    if not results or not results[0]:
+                        continue
+                    
+                    res = results[0]
+                    page_lines = []
+
+                    # --- FORMAT 1: PaddleX 3.7+ (Dictionary-like object) ---
+                    if isinstance(res, dict) or hasattr(res, 'keys'):
+                        # The new backend stores lists inside these keys
+                        texts = res.get('rec_texts', []) or res.get('rec_text', [])
+                        boxes = res.get('dt_polys', []) or res.get('boxes', [])
+                        scores = res.get('rec_scores', []) or res.get('scores', [])
+                        
+                        for i in range(len(texts)):
+                            cleaned_text = str(texts[i]).strip()
+                            if cleaned_text:
+                                # Safely get coordinates and confidence
+                                box = boxes[i] if i < len(boxes) else [[0.0, 0.0]]
+                                conf = scores[i] if i < len(scores) else 1.0
+                                
+                                x0, y0 = box[0][0], box[0][1]
+                                
+                                cleaned_sections.append({
+                                    "class": "ocr_text",
+                                    "x0": float(x0),
+                                    "y0": float(y0),
+                                    "confidence": round(float(conf), 4),
+                                    "text": cleaned_text,
+                                })
+                                page_lines.append(cleaned_text)
+
+                    # --- FORMAT 2: Legacy PaddleOCR (List of Lists) ---
+                    elif isinstance(res, list):
+                        for line in res:
                             try:
-                                # Safe index-based extraction to prevent unpacking errors
                                 box_coords = line[0]
                                 text_info = line[1]
                                 
@@ -129,23 +161,23 @@ class TextExtraction:
                                 confidence = float(text_info[1]) if len(text_info) > 1 else 1.0
                                 
                                 if cleaned_text:
-                                    # Extract top-left coordinate for layout tracking
                                     x0, y0 = box_coords[0][0], box_coords[0][1]
-                                    
                                     cleaned_sections.append({
                                         "class": "ocr_text",
                                         "x0": float(x0),
                                         "y0": float(y0),
-                                        "confidence": round(confidence, 4),
+                                        "confidence": round(float(confidence), 4),
                                         "text": cleaned_text,
                                     })
                                     page_lines.append(cleaned_text)
-                            except Exception:
-                                continue # Skip any malformed detection lines safely
+                            except Exception as e:
+                                print(f"   ⚠️ Warning: Skipped OCR line due to parsing error: {e}")
 
-                        if page_lines:
-                            full_text_stream.append("\n".join(page_lines))
-            return "\n".join(full_text_stream), cleaned_sections
+                    if page_lines:
+                        full_text_stream.append("\n".join(page_lines))
+        
+        # ---> FIX: Properly indented to execute for BOTH Branch A and Branch B <---
+        return "\n".join(full_text_stream), cleaned_sections
 
     def _extract_docx(self, file_path: str) -> tuple[str, list[dict]]:
         doc = docx.Document(file_path)

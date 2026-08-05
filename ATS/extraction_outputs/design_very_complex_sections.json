@@ -1,1 +1,268 @@
-[]
+[
+  {
+    "class": "ocr_text",
+    "x0": 101.0,
+    "y0": 52.0,
+    "confidence": 0.7572,
+    "text": "en k"
+  },
+  {
+    "class": "ocr_text",
+    "x0": 1512.0,
+    "y0": 96.0,
+    "confidence": 0.7911,
+    "text": "as er"
+  },
+  {
+    "class": "ocr_text",
+    "x0": 110.0,
+    "y0": 202.0,
+    "confidence": 0.5917,
+    "text": "N 5"
+  },
+  {
+    "class": "ocr_text",
+    "x0": 117.0,
+    "y0": 349.0,
+    "confidence": 0.8323,
+    "text": "eive"
+  },
+  {
+    "class": "ocr_text",
+    "x0": 113.0,
+    "y0": 487.0,
+    "confidence": 0.5726,
+    "text": "To te"
+  },
+  {
+    "class": "ocr_text",
+    "x0": 117.0,
+    "y0": 534.0,
+    "confidence": 0.4927,
+    "text": "ev"
+  },
+  {
+    "class": "ocr_text",
+    "x0": 116.0,
+    "y0": 624.0,
+    "confidence": 0.9968,
+    "text": "Education"
+  },
+  {
+    "class": "ocr_text",
+    "x0": 115.0,
+    "y0": 741.0,
+    "confidence": 1.0,
+    "text": "The Illinois Institute of Art-Chicago"
+  },
+  {
+    "class": "ocr_text",
+    "x0": 1405.0,
+    "y0": 737.0,
+    "confidence": 1.0,
+    "text": "Graduated December 2008"
+  },
+  {
+    "class": "ocr_text",
+    "x0": 115.0,
+    "y0": 782.0,
+    "confidence": 0.9991,
+    "text": "Bachelor of Fine Arts in Fashion Design"
+  },
+  {
+    "class": "ocr_text",
+    "x0": 115.0,
+    "y0": 867.0,
+    "confidence": 0.9999,
+    "text": "University of Illinois, Urbana-Champaign"
+  },
+  {
+    "class": "ocr_text",
+    "x0": 1512.0,
+    "y0": 867.0,
+    "confidence": 0.9987,
+    "text": "Graduated May 2006"
+  },
+  {
+    "class": "ocr_text",
+    "x0": 115.0,
+    "y0": 913.0,
+    "confidence": 0.9999,
+    "text": "Bachelor of Fine Arts in Photography"
+  },
+  {
+    "class": "ocr_text",
+    "x0": 108.0,
+    "y0": 989.0,
+    "confidence": 0.9792,
+    "text": "Skills"
+  },
+  {
+    "class": "ocr_text",
+    "x0": 115.0,
+    "y0": 1118.0,
+    "confidence": 0.9885,
+    "text": "Computer: Expert in Adobe Photoshop, Adobe Illustrator (Mac and PC platform), Gerber"
+  },
+  {
+    "class": "ocr_text",
+    "x0": 117.0,
+    "y0": 1168.0,
+    "confidence": 0.9863,
+    "text": "(Computer Pattern Design and WebPDM), Mierografix Designer, U4ia, Microsoft Word."
+  },
+  {
+    "class": "ocr_text",
+    "x0": 117.0,
+    "y0": 1214.0,
+    "confidence": 0.9995,
+    "text": "Microsoft Excel and Microsoft PowerPoint"
+  },
+  {
+    "class": "ocr_text",
+    "x0": 120.0,
+    "y0": 1287.0,
+    "confidence": 0.9896,
+    "text": "Technical: Sewing. Flat Pattern Making. Computer Pattern Making. Computer Design. Apparel"
+  },
+  {
+    "class": "ocr_text",
+    "x0": 116.0,
+    "y0": 1333.0,
+    "confidence": 0.9925,
+    "text": "Evaluation. Cost and Line Specifications, Fashion and Flat sketching. Concept and Line"
+  },
+  {
+    "class": "ocr_text",
+    "x0": 117.0,
+    "y0": 1374.0,
+    "confidence": 0.9888,
+    "text": "Development. Product Development. Woven Structures, Technical Sketching. Beading. Surface"
+  },
+  {
+    "class": "ocr_text",
+    "x0": 118.0,
+    "y0": 1420.0,
+    "confidence": 0.9899,
+    "text": "Design Techniques: Devore, Silk Printing. Shibori"
+  },
+  {
+    "class": "ocr_text",
+    "x0": 118.0,
+    "y0": 1499.0,
+    "confidence": 0.9922,
+    "text": "WorkExperience"
+  },
+  {
+    "class": "ocr_text",
+    "x0": 119.0,
+    "y0": 1616.0,
+    "confidence": 0.9974,
+    "text": "Loop Apparel Clothing Company, Chicago. IL"
+  },
+  {
+    "class": "ocr_text",
+    "x0": 1606.0,
+    "y0": 1627.0,
+    "confidence": 0.9992,
+    "text": "08.06 to present"
+  },
+  {
+    "class": "ocr_text",
+    "x0": 258.0,
+    "y0": 1716.0,
+    "confidence": 1.0,
+    "text": "Clarify and define target market, conduct trend and market research"
+  },
+  {
+    "class": "ocr_text",
+    "x0": 259.0,
+    "y0": 1769.0,
+    "confidence": 0.9933,
+    "text": "Develop themes, color and mood, illustrate and layout concepts digitally"
+  },
+  {
+    "class": "ocr_text",
+    "x0": 260.0,
+    "y0": 1825.0,
+    "confidence": 0.9976,
+    "text": "Organize promotional events, develop advertisement strategies"
+  },
+  {
+    "class": "ocr_text",
+    "x0": 121.0,
+    "y0": 1949.0,
+    "confidence": 0.98,
+    "text": "Mary Henebry Photography, Chicago, IL"
+  },
+  {
+    "class": "ocr_text",
+    "x0": 1640.0,
+    "y0": 1972.0,
+    "confidence": 0.9942,
+    "text": "06.05 to 08.05"
+  },
+  {
+    "class": "ocr_text",
+    "x0": 258.0,
+    "y0": 2045.0,
+    "confidence": 0.9996,
+    "text": "Organized equipment and photo shoots, assisted in fast pace shoots for well"
+  },
+  {
+    "class": "ocr_text",
+    "x0": 345.0,
+    "y0": 2096.0,
+    "confidence": 1.0,
+    "text": "established clientele"
+  },
+  {
+    "class": "ocr_text",
+    "x0": 257.0,
+    "y0": 2138.0,
+    "confidence": 1.0,
+    "text": "Facilitated post-production retouching and color correcting using Photoshop"
+  },
+  {
+    "class": "ocr_text",
+    "x0": 261.0,
+    "y0": 2195.0,
+    "confidence": 1.0,
+    "text": "Maintained studio and equipment"
+  },
+  {
+    "class": "ocr_text",
+    "x0": 260.0,
+    "y0": 2247.0,
+    "confidence": 0.9999,
+    "text": "Coordinated and managed multiple priorities and tasks on a daily basis"
+  },
+  {
+    "class": "ocr_text",
+    "x0": 121.0,
+    "y0": 2388.0,
+    "confidence": 0.9989,
+    "text": "Art Access Gallery, Salt Lake City, UT"
+  },
+  {
+    "class": "ocr_text",
+    "x0": 1630.0,
+    "y0": 2419.0,
+    "confidence": 0.9471,
+    "text": "06.03 tg 08.03"
+  },
+  {
+    "class": "ocr_text",
+    "x0": 264.0,
+    "y0": 2488.0,
+    "confidence": 1.0,
+    "text": "Summarized artist statements and proposals for gallery committee"
+  },
+  {
+    "class": "ocr_text",
+    "x0": 263.0,
+    "y0": 2540.0,
+    "confidence": 0.9939,
+    "text": "Organized and presented artists' slides to the committee for show selection."
+  }
+]
