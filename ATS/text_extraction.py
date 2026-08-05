@@ -112,10 +112,14 @@ class TextExtraction:
 
                 for page in doc:
                     # 1. Render PDF page to high-res image (300 DPI) in RAM
-                    pix = page.get_pixmap(dpi=300)
+                    pix = page.get_pixmap(dpi=200)
                     img_pil = Image.open(io.BytesIO(pix.tobytes("png"))).convert("RGB")
-                    img_np = np.array(img_pil)
 
+                    max_size = 3800
+                    if max(img_pil.size) > max_size:
+                        img_pil.thumbnail((max_size, max_size), Image.Resampling.LANCZOS)
+
+                    img_np = np.array(img_pil)
                     # 2. Execute PaddleOCR inference
                     results = ocr_engine.ocr(img_np)
 

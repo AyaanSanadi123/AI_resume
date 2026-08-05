@@ -1,268 +1,275 @@
 [
   {
     "class": "ocr_text",
-    "x0": 101.0,
-    "y0": 52.0,
-    "confidence": 0.7572,
-    "text": "en k"
+    "x0": 70.0,
+    "y0": 39.0,
+    "confidence": 0.9927,
+    "text": "Jenna Galecki"
   },
   {
     "class": "ocr_text",
-    "x0": 1512.0,
-    "y0": 96.0,
-    "confidence": 0.7911,
-    "text": "as er"
+    "x0": 1005.0,
+    "y0": 54.0,
+    "confidence": 0.9988,
+    "text": "Fashion Designer"
   },
   {
     "class": "ocr_text",
-    "x0": 110.0,
-    "y0": 202.0,
-    "confidence": 0.5917,
-    "text": "N 5"
+    "x0": 0.0,
+    "y0": 107.0,
+    "confidence": 0.262,
+    "text": "t"
   },
   {
     "class": "ocr_text",
-    "x0": 117.0,
-    "y0": 349.0,
-    "confidence": 0.8323,
-    "text": "eive"
+    "x0": 70.0,
+    "y0": 131.0,
+    "confidence": 0.9415,
+    "text": "921 S. Waioia LaGrange, JL 60525 jenna.galecki@gmail.com 708.415.1559"
   },
   {
     "class": "ocr_text",
-    "x0": 113.0,
-    "y0": 487.0,
-    "confidence": 0.5726,
-    "text": "To te"
+    "x0": 74.0,
+    "y0": 230.0,
+    "confidence": 0.9997,
+    "text": "Objective"
   },
   {
     "class": "ocr_text",
-    "x0": 117.0,
-    "y0": 534.0,
-    "confidence": 0.4927,
-    "text": "ev"
+    "x0": 75.0,
+    "y0": 324.0,
+    "confidence": 0.9929,
+    "text": "To obtain a position where I can contribute to an innovative finished product through the"
   },
   {
     "class": "ocr_text",
-    "x0": 116.0,
-    "y0": 624.0,
-    "confidence": 0.9968,
+    "x0": 75.0,
+    "y0": 353.0,
+    "confidence": 0.9832,
+    "text": "development of theme, color, fabrication. silhouettes and pattern."
+  },
+  {
+    "class": "ocr_text",
+    "x0": 73.0,
+    "y0": 411.0,
+    "confidence": 0.9991,
     "text": "Education"
   },
   {
     "class": "ocr_text",
-    "x0": 115.0,
-    "y0": 741.0,
-    "confidence": 1.0,
+    "x0": 77.0,
+    "y0": 491.0,
+    "confidence": 0.9997,
     "text": "The Illinois Institute of Art-Chicago"
   },
   {
     "class": "ocr_text",
-    "x0": 1405.0,
-    "y0": 737.0,
+    "x0": 937.0,
+    "y0": 487.0,
     "confidence": 1.0,
     "text": "Graduated December 2008"
   },
   {
     "class": "ocr_text",
-    "x0": 115.0,
-    "y0": 782.0,
-    "confidence": 0.9991,
+    "x0": 76.0,
+    "y0": 519.0,
+    "confidence": 0.9892,
     "text": "Bachelor of Fine Arts in Fashion Design"
   },
   {
     "class": "ocr_text",
-    "x0": 115.0,
-    "y0": 867.0,
-    "confidence": 0.9999,
+    "x0": 77.0,
+    "y0": 577.0,
+    "confidence": 0.9948,
     "text": "University of Illinois, Urbana-Champaign"
   },
   {
     "class": "ocr_text",
-    "x0": 1512.0,
-    "y0": 867.0,
-    "confidence": 0.9987,
+    "x0": 1007.0,
+    "y0": 571.0,
+    "confidence": 0.9968,
     "text": "Graduated May 2006"
   },
   {
     "class": "ocr_text",
-    "x0": 115.0,
-    "y0": 913.0,
-    "confidence": 0.9999,
+    "x0": 76.0,
+    "y0": 606.0,
+    "confidence": 0.9873,
     "text": "Bachelor of Fine Arts in Photography"
   },
   {
     "class": "ocr_text",
-    "x0": 108.0,
-    "y0": 989.0,
-    "confidence": 0.9792,
+    "x0": 70.0,
+    "y0": 653.0,
+    "confidence": 0.9985,
     "text": "Skills"
   },
   {
     "class": "ocr_text",
-    "x0": 115.0,
-    "y0": 1118.0,
-    "confidence": 0.9885,
+    "x0": 78.0,
+    "y0": 743.0,
+    "confidence": 0.9895,
     "text": "Computer: Expert in Adobe Photoshop, Adobe Illustrator (Mac and PC platform), Gerber"
   },
   {
     "class": "ocr_text",
-    "x0": 117.0,
-    "y0": 1168.0,
-    "confidence": 0.9863,
-    "text": "(Computer Pattern Design and WebPDM), Mierografix Designer, U4ia, Microsoft Word."
+    "x0": 77.0,
+    "y0": 775.0,
+    "confidence": 0.9955,
+    "text": "(Computer Pattern Design and WebPDM), Micrografix Designer, U4ia, Microsoft Word."
   },
   {
     "class": "ocr_text",
-    "x0": 117.0,
-    "y0": 1214.0,
-    "confidence": 0.9995,
+    "x0": 76.0,
+    "y0": 807.0,
+    "confidence": 0.9999,
     "text": "Microsoft Excel and Microsoft PowerPoint"
   },
   {
     "class": "ocr_text",
-    "x0": 120.0,
-    "y0": 1287.0,
-    "confidence": 0.9896,
+    "x0": 78.0,
+    "y0": 853.0,
+    "confidence": 0.9961,
     "text": "Technical: Sewing. Flat Pattern Making. Computer Pattern Making. Computer Design. Apparel"
   },
   {
     "class": "ocr_text",
-    "x0": 116.0,
-    "y0": 1333.0,
-    "confidence": 0.9925,
-    "text": "Evaluation. Cost and Line Specifications, Fashion and Flat sketching. Concept and Line"
+    "x0": 76.0,
+    "y0": 885.0,
+    "confidence": 0.9813,
+    "text": "Evaluation. Cost and Line Specifications. Fashion and Flat sketching, Concept and Line"
   },
   {
     "class": "ocr_text",
-    "x0": 117.0,
-    "y0": 1374.0,
-    "confidence": 0.9888,
+    "x0": 77.0,
+    "y0": 914.0,
+    "confidence": 0.9857,
     "text": "Development. Product Development. Woven Structures, Technical Sketching. Beading. Surface"
   },
   {
     "class": "ocr_text",
-    "x0": 118.0,
-    "y0": 1420.0,
-    "confidence": 0.9899,
+    "x0": 77.0,
+    "y0": 945.0,
+    "confidence": 0.9881,
     "text": "Design Techniques: Devore, Silk Printing. Shibori"
   },
   {
     "class": "ocr_text",
-    "x0": 118.0,
-    "y0": 1499.0,
-    "confidence": 0.9922,
+    "x0": 77.0,
+    "y0": 994.0,
+    "confidence": 0.993,
     "text": "WorkExperience"
   },
   {
     "class": "ocr_text",
-    "x0": 119.0,
-    "y0": 1616.0,
-    "confidence": 0.9974,
+    "x0": 78.0,
+    "y0": 1076.0,
+    "confidence": 0.9849,
     "text": "Loop Apparel Clothing Company, Chicago. IL"
   },
   {
     "class": "ocr_text",
-    "x0": 1606.0,
-    "y0": 1627.0,
-    "confidence": 0.9992,
+    "x0": 1069.0,
+    "y0": 1079.0,
+    "confidence": 0.9954,
     "text": "08.06 to present"
   },
   {
     "class": "ocr_text",
-    "x0": 258.0,
-    "y0": 1716.0,
-    "confidence": 1.0,
+    "x0": 171.0,
+    "y0": 1142.0,
+    "confidence": 0.9998,
     "text": "Clarify and define target market, conduct trend and market research"
   },
   {
     "class": "ocr_text",
-    "x0": 259.0,
-    "y0": 1769.0,
-    "confidence": 0.9933,
+    "x0": 171.0,
+    "y0": 1177.0,
+    "confidence": 0.9971,
     "text": "Develop themes, color and mood, illustrate and layout concepts digitally"
   },
   {
     "class": "ocr_text",
-    "x0": 260.0,
-    "y0": 1825.0,
-    "confidence": 0.9976,
+    "x0": 171.0,
+    "y0": 1214.0,
+    "confidence": 0.9942,
     "text": "Organize promotional events, develop advertisement strategies"
   },
   {
     "class": "ocr_text",
-    "x0": 121.0,
-    "y0": 1949.0,
-    "confidence": 0.98,
+    "x0": 79.0,
+    "y0": 1297.0,
+    "confidence": 0.9939,
     "text": "Mary Henebry Photography, Chicago, IL"
   },
   {
     "class": "ocr_text",
-    "x0": 1640.0,
-    "y0": 1972.0,
-    "confidence": 0.9942,
+    "x0": 1092.0,
+    "y0": 1311.0,
+    "confidence": 0.9769,
     "text": "06.05 to 08.05"
   },
   {
     "class": "ocr_text",
-    "x0": 258.0,
-    "y0": 2045.0,
-    "confidence": 0.9996,
+    "x0": 169.0,
+    "y0": 1361.0,
+    "confidence": 0.9999,
     "text": "Organized equipment and photo shoots, assisted in fast pace shoots for well"
   },
   {
     "class": "ocr_text",
-    "x0": 345.0,
-    "y0": 2096.0,
-    "confidence": 1.0,
+    "x0": 230.0,
+    "y0": 1396.0,
+    "confidence": 0.9999,
     "text": "established clientele"
   },
   {
     "class": "ocr_text",
-    "x0": 257.0,
-    "y0": 2138.0,
-    "confidence": 1.0,
+    "x0": 169.0,
+    "y0": 1424.0,
+    "confidence": 0.9999,
     "text": "Facilitated post-production retouching and color correcting using Photoshop"
   },
   {
     "class": "ocr_text",
-    "x0": 261.0,
-    "y0": 2195.0,
-    "confidence": 1.0,
+    "x0": 171.0,
+    "y0": 1463.0,
+    "confidence": 0.9999,
     "text": "Maintained studio and equipment"
   },
   {
     "class": "ocr_text",
-    "x0": 260.0,
-    "y0": 2247.0,
+    "x0": 170.0,
+    "y0": 1496.0,
     "confidence": 0.9999,
     "text": "Coordinated and managed multiple priorities and tasks on a daily basis"
   },
   {
     "class": "ocr_text",
-    "x0": 121.0,
-    "y0": 2388.0,
-    "confidence": 0.9989,
+    "x0": 80.0,
+    "y0": 1590.0,
+    "confidence": 0.9888,
     "text": "Art Access Gallery, Salt Lake City, UT"
   },
   {
     "class": "ocr_text",
-    "x0": 1630.0,
-    "y0": 2419.0,
-    "confidence": 0.9471,
-    "text": "06.03 tg 08.03"
+    "x0": 1088.0,
+    "y0": 1613.0,
+    "confidence": 0.9976,
+    "text": "06.03 to 08.03"
   },
   {
     "class": "ocr_text",
-    "x0": 264.0,
-    "y0": 2488.0,
-    "confidence": 1.0,
+    "x0": 169.0,
+    "y0": 1658.0,
+    "confidence": 0.9943,
     "text": "Summarized artist statements and proposals for gallery committee"
   },
   {
     "class": "ocr_text",
-    "x0": 263.0,
-    "y0": 2540.0,
-    "confidence": 0.9939,
+    "x0": 173.0,
+    "y0": 1694.0,
+    "confidence": 0.9993,
     "text": "Organized and presented artists' slides to the committee for show selection."
   }
 ]

@@ -1,429 +1,422 @@
 [
   {
     "class": "ocr_text",
-    "x0": 1110.0,
-    "y0": 1.0,
-    "confidence": 1.0,
-    "text": "Claire"
+    "x0": 430.0,
+    "y0": 0.0,
+    "confidence": 0.9977,
+    "text": "Jessica Claire"
   },
   {
     "class": "ocr_text",
-    "x0": 645.0,
-    "y0": 15.0,
+    "x0": 1159.0,
+    "y0": 112.0,
     "confidence": 1.0,
-    "text": "Jessica"
+    "text": "(555)432-1000"
   },
   {
     "class": "ocr_text",
-    "x0": 2161.0,
-    "y0": 158.0,
+    "x0": 1438.0,
+    "y0": 109.0,
     "confidence": 1.0,
     "text": "resumesample@example.com"
   },
   {
     "class": "ocr_text",
-    "x0": 1742.0,
-    "y0": 169.0,
-    "confidence": 0.9837,
-    "text": "(555) 432-1000"
-  },
-  {
-    "class": "ocr_text",
-    "x0": 720.0,
-    "y0": 185.0,
-    "confidence": 0.9999,
+    "x0": 478.0,
+    "y0": 121.0,
+    "confidence": 0.995,
     "text": "Montgomery Street, San Francisco, CA 94105"
   },
   {
     "class": "ocr_text",
-    "x0": 295.0,
-    "y0": 362.0,
+    "x0": 196.0,
+    "y0": 237.0,
     "confidence": 1.0,
     "text": "OBJECTIVE"
   },
   {
     "class": "ocr_text",
-    "x0": 658.0,
-    "y0": 433.0,
-    "confidence": 0.9956,
+    "x0": 435.0,
+    "y0": 240.0,
+    "confidence": 0.9966,
+    "text": "Data Science and Engineering Leader looking for a senior leadership position with the responsibilities to drive"
+  },
+  {
+    "class": "ocr_text",
+    "x0": 437.0,
+    "y0": 286.0,
+    "confidence": 0.9826,
     "text": "organizational KPis through advance data analytics and use of artificial intelligence to guide development of"
   },
   {
     "class": "ocr_text",
-    "x0": 662.0,
-    "y0": 503.0,
-    "confidence": 0.9992,
+    "x0": 440.0,
+    "y0": 332.0,
+    "confidence": 0.9952,
     "text": "modern software products and platforms."
   },
   {
     "class": "ocr_text",
-    "x0": 57.0,
-    "y0": 645.0,
-    "confidence": 0.9999,
+    "x0": 37.0,
+    "y0": 425.0,
+    "confidence": 1.0,
     "text": "EXECUTIVE SUMMARY"
   },
   {
     "class": "ocr_text",
-    "x0": 650.0,
-    "y0": 665.0,
-    "confidence": 0.9964,
+    "x0": 432.0,
+    "y0": 440.0,
+    "confidence": 0.9991,
     "text": "As a Principal/Director of Data Science and Engineering, with 16+ years of professional experience and 7+ in"
   },
   {
     "class": "ocr_text",
-    "x0": 651.0,
-    "y0": 731.0,
-    "confidence": 0.9886,
+    "x0": 434.0,
+    "y0": 485.0,
+    "confidence": 0.9987,
     "text": "management, I am proficient in Leading Strategic Product Thinking effort, Data Driven Decisioning, SDLC,"
   },
   {
     "class": "ocr_text",
-    "x0": 650.0,
-    "y0": 790.0,
-    "confidence": 0.9921,
+    "x0": 432.0,
+    "y0": 525.0,
+    "confidence": 0.9966,
     "text": "Planning, Cross Functional and Cross Team Coordination, Team Development, Tactical Reorganization,"
   },
   {
     "class": "ocr_text",
-    "x0": 649.0,
-    "y0": 856.0,
-    "confidence": 0.9894,
+    "x0": 432.0,
+    "y0": 569.0,
+    "confidence": 0.9998,
     "text": "Consensus Building and Operations Management"
   },
   {
     "class": "ocr_text",
-    "x0": 56.0,
-    "y0": 1002.0,
-    "confidence": 0.9996,
+    "x0": 38.0,
+    "y0": 665.0,
+    "confidence": 0.9995,
     "text": "AREAS OF EXPERTISE"
   },
   {
     "class": "ocr_text",
-    "x0": 765.0,
-    "y0": 1016.0,
-    "confidence": 1.0,
+    "x0": 509.0,
+    "y0": 677.0,
+    "confidence": 0.9998,
     "text": "Technology Leadership and Innovation"
   },
   {
     "class": "ocr_text",
-    "x0": 1842.0,
-    "y0": 1015.0,
+    "x0": 1226.0,
+    "y0": 677.0,
     "confidence": 1.0,
     "text": "Predictive Analytics"
   },
   {
     "class": "ocr_text",
-    "x0": 762.0,
-    "y0": 1085.0,
-    "confidence": 0.9998,
+    "x0": 508.0,
+    "y0": 721.0,
+    "confidence": 0.9965,
     "text": "Product Planning and OKR Definition"
   },
   {
     "class": "ocr_text",
-    "x0": 1843.0,
-    "y0": 1086.0,
+    "x0": 1227.0,
+    "y0": 725.0,
     "confidence": 0.9999,
     "text": "Data Science and Engineering"
   },
   {
     "class": "ocr_text",
-    "x0": 761.0,
-    "y0": 1148.0,
-    "confidence": 0.9977,
+    "x0": 506.0,
+    "y0": 764.0,
+    "confidence": 0.9906,
     "text": "Leading MVP Definition and Development"
   },
   {
     "class": "ocr_text",
-    "x0": 1839.0,
-    "y0": 1149.0,
-    "confidence": 1.0,
+    "x0": 1227.0,
+    "y0": 766.0,
+    "confidence": 0.9997,
     "text": "Machine Learning and Distributed Computing"
   },
   {
     "class": "ocr_text",
-    "x0": 758.0,
-    "y0": 1214.0,
-    "confidence": 1.0,
+    "x0": 505.0,
+    "y0": 808.0,
+    "confidence": 0.9999,
     "text": "Strategic Annual and Quarterly Planning"
   },
   {
     "class": "ocr_text",
-    "x0": 1840.0,
-    "y0": 1218.0,
+    "x0": 1225.0,
+    "y0": 813.0,
     "confidence": 1.0,
     "text": "High Performance Computing"
   },
   {
     "class": "ocr_text",
-    "x0": 758.0,
-    "y0": 1277.0,
-    "confidence": 1.0,
+    "x0": 504.0,
+    "y0": 849.0,
+    "confidence": 0.9996,
     "text": "Fostering Strategic Partnerships"
   },
   {
     "class": "ocr_text",
-    "x0": 1843.0,
-    "y0": 1286.0,
-    "confidence": 1.0,
+    "x0": 1228.0,
+    "y0": 858.0,
+    "confidence": 0.9844,
     "text": "Optimization and Simulation"
   },
   {
     "class": "ocr_text",
-    "x0": 759.0,
-    "y0": 1344.0,
-    "confidence": 0.9998,
+    "x0": 505.0,
+    "y0": 895.0,
+    "confidence": 0.9999,
     "text": "Project and Resource Planning"
   },
   {
     "class": "ocr_text",
-    "x0": 1840.0,
-    "y0": 1356.0,
-    "confidence": 1.0,
+    "x0": 454.0,
+    "y0": 911.0,
+    "confidence": 0.6245,
+    "text": "0"
+  },
+  {
+    "class": "ocr_text",
+    "x0": 1226.0,
+    "y0": 904.0,
+    "confidence": 0.9913,
     "text": "Algorithms and Data Structures"
   },
   {
     "class": "ocr_text",
-    "x0": 759.0,
-    "y0": 1411.0,
-    "confidence": 0.9853,
+    "x0": 505.0,
+    "y0": 941.0,
+    "confidence": 0.9966,
     "text": "Managing Multiple Scrum Teams"
   },
   {
     "class": "ocr_text",
-    "x0": 1838.0,
-    "y0": 1421.0,
-    "confidence": 0.9901,
+    "x0": 1225.0,
+    "y0": 947.0,
+    "confidence": 0.9955,
     "text": "Java, Python, Spark, Map Reduce"
   },
   {
     "class": "ocr_text",
-    "x0": 757.0,
-    "y0": 1477.0,
+    "x0": 503.0,
+    "y0": 983.0,
     "confidence": 1.0,
     "text": "Product Architecture and Design"
   },
   {
     "class": "ocr_text",
-    "x0": 7.0,
-    "y0": 1638.0,
-    "confidence": 0.9999,
+    "x0": 8.0,
+    "y0": 1090.0,
+    "confidence": 1.0,
     "text": "PRODUCTPORTFOLIO"
   },
   {
     "class": "ocr_text",
-    "x0": 754.0,
-    "y0": 1646.0,
-    "confidence": 0.9917,
+    "x0": 501.0,
+    "y0": 1095.0,
+    "confidence": 0.991,
     "text": "Data Science - Data Quality Inspector, Recommendations Simulator, Al ChatOps Bot"
   },
   {
     "class": "ocr_text",
-    "x0": 751.0,
-    "y0": 1711.0,
-    "confidence": 0.9882,
+    "x0": 500.0,
+    "y0": 1139.0,
+    "confidence": 0.9921,
     "text": "Retail - Personalized Recommendations API, Rules Engine, ChatOps, Feedback Data Collection,"
   },
   {
     "class": "ocr_text",
-    "x0": 754.0,
-    "y0": 1780.0,
-    "confidence": 0.994,
+    "x0": 503.0,
+    "y0": 1186.0,
+    "confidence": 0.9934,
     "text": "Impressions Analysis, Operational Monitoring and SLA Alerting"
   },
   {
     "class": "ocr_text",
-    "x0": 749.0,
-    "y0": 1844.0,
-    "confidence": 0.9973,
+    "x0": 499.0,
+    "y0": 1229.0,
+    "confidence": 0.9927,
     "text": "Supply Chain - Synchronization, Forecasting, Recommendations Engine and Visual State Monitoring"
   },
   {
     "class": "ocr_text",
-    "x0": 755.0,
-    "y0": 1918.0,
-    "confidence": 0.9677,
+    "x0": 501.0,
+    "y0": 1277.0,
+    "confidence": 0.9912,
     "text": "and Profiling"
   },
   {
     "class": "ocr_text",
-    "x0": 753.0,
-    "y0": 1983.0,
-    "confidence": 0.9963,
+    "x0": 500.0,
+    "y0": 1321.0,
+    "confidence": 0.9883,
     "text": "Healthcare - Orthotix Personalization, Customization and Recommendations Engine"
   },
   {
     "class": "ocr_text",
-    "x0": 754.0,
-    "y0": 2049.0,
-    "confidence": 0.9915,
+    "x0": 502.0,
+    "y0": 1367.0,
+    "confidence": 0.9969,
     "text": "Storage Area Network - Operational Control, Metrics Reporting and Analytics, Recommendations"
   },
   {
     "class": "ocr_text",
-    "x0": 756.0,
-    "y0": 2112.0,
-    "confidence": 0.9994,
+    "x0": 503.0,
+    "y0": 1408.0,
+    "confidence": 0.9997,
     "text": "Engine, Visualization and SLA Monitoring"
   },
   {
     "class": "ocr_text",
-    "x0": 254.0,
-    "y0": 2281.0,
-    "confidence": 1.0,
+    "x0": 166.0,
+    "y0": 1518.0,
+    "confidence": 0.9999,
     "text": "EXPERIENCE"
   },
   {
     "class": "ocr_text",
-    "x0": 636.0,
-    "y0": 2272.0,
-    "confidence": 0.9906,
+    "x0": 419.0,
+    "y0": 1511.0,
+    "confidence": 0.9777,
     "text": "PRINCIPAL, DATA SCIENCE AND ENGINEERING"
   },
   {
     "class": "ocr_text",
-    "x0": 2361.0,
-    "y0": 2296.0,
+    "x0": 1571.0,
+    "y0": 1530.0,
     "confidence": 1.0,
     "text": "07/2014 to CURRENT"
   },
   {
     "class": "ocr_text",
-    "x0": 642.0,
-    "y0": 2364.0,
-    "confidence": 0.9734,
+    "x0": 428.0,
+    "y0": 1575.0,
+    "confidence": 0.9746,
     "text": "Target | City, STATE"
   },
   {
     "class": "ocr_text",
-    "x0": 635.0,
-    "y0": 2440.0,
-    "confidence": 0.9973,
+    "x0": 422.0,
+    "y0": 1627.0,
+    "confidence": 0.9935,
     "text": "Managing and Leading Data Science and Engineering projects, teams and roadmap, Driving KPIs and"
   },
   {
     "class": "ocr_text",
-    "x0": 640.0,
-    "y0": 2513.0,
-    "confidence": 0.9999,
+    "x0": 425.0,
+    "y0": 1676.0,
+    "confidence": 0.9998,
     "text": "Delivering against OKRs"
   },
   {
     "class": "ocr_text",
-    "x0": 638.0,
-    "y0": 2618.0,
-    "confidence": 0.9743,
-    "text": "PRONCIPAL ENGINEER/PRODUCT OWNER"
+    "x0": 424.0,
+    "y0": 1745.0,
+    "confidence": 0.9826,
+    "text": "PRENCIPAL ENGINEER/PRODUCT OWNER"
   },
   {
     "class": "ocr_text",
-    "x0": 2415.0,
-    "y0": 2635.0,
-    "confidence": 0.9974,
+    "x0": 1608.0,
+    "y0": 1758.0,
+    "confidence": 0.9991,
     "text": "02/2011 to 06/2014"
   },
   {
     "class": "ocr_text",
-    "x0": 637.0,
-    "y0": 2699.0,
-    "confidence": 0.9872,
+    "x0": 424.0,
+    "y0": 1800.0,
+    "confidence": 0.9975,
     "text": "Hitachi Data Systems | City, STATE"
   },
   {
     "class": "ocr_text",
-    "x0": 632.0,
-    "y0": 2765.0,
-    "confidence": 0.9992,
-    "text": "Managing and Leading teams on Converged Infrastructure and SAN Analytics, Reporting, Monitoring, SLA"
-  },
-  {
-    "class": "ocr_text",
-    "x0": 638.0,
-    "y0": 2846.0,
-    "confidence": 1.0,
+    "x0": 424.0,
+    "y0": 1898.0,
+    "confidence": 0.9998,
     "text": "Management and Visualization"
   },
   {
     "class": "ocr_text",
-    "x0": 637.0,
-    "y0": 2948.0,
-    "confidence": 0.9741,
-    "text": "LEOD SDK ARCHITECT"
+    "x0": 422.0,
+    "y0": 1962.0,
+    "confidence": 0.982,
+    "text": "LEED SDK ARCHITECT"
   },
   {
     "class": "ocr_text",
-    "x0": 2410.0,
-    "y0": 2974.0,
-    "confidence": 0.9999,
+    "x0": 1603.0,
+    "y0": 1982.0,
+    "confidence": 0.9989,
     "text": "04/2010 to 01/2011"
   },
   {
     "class": "ocr_text",
-    "x0": 636.0,
-    "y0": 3035.0,
-    "confidence": 0.9935,
+    "x0": 423.0,
+    "y0": 2022.0,
+    "confidence": 0.9958,
     "text": "Playfirst Inc. | City, STATE"
   },
   {
     "class": "ocr_text",
-    "x0": 627.0,
-    "y0": 3097.0,
-    "confidence": 1.0,
-    "text": "Social Games SDK Design for Flagship Social Games Chocolatier and DinerDash"
-  },
-  {
-    "class": "ocr_text",
-    "x0": 177.0,
-    "y0": 3284.0,
-    "confidence": 0.9846,
+    "x0": 120.0,
+    "y0": 2189.0,
+    "confidence": 0.9985,
     "text": "EDUCATION AND"
   },
   {
     "class": "ocr_text",
-    "x0": 626.0,
-    "y0": 3275.0,
-    "confidence": 0.9886,
+    "x0": 415.0,
+    "y0": 2184.0,
+    "confidence": 0.9899,
     "text": "Master of Science | Electrical and Computer Engieering"
   },
   {
     "class": "ocr_text",
-    "x0": 2718.0,
-    "y0": 3315.0,
+    "x0": 1810.0,
+    "y0": 2210.0,
     "confidence": 1.0,
     "text": "2015"
   },
   {
     "class": "ocr_text",
-    "x0": 316.0,
-    "y0": 3346.0,
+    "x0": 211.0,
+    "y0": 2228.0,
     "confidence": 1.0,
     "text": "TRAINING"
   },
   {
     "class": "ocr_text",
-    "x0": 626.0,
-    "y0": 3350.0,
-    "confidence": 0.9931,
+    "x0": 416.0,
+    "y0": 2233.0,
+    "confidence": 0.9997,
     "text": "Carnegie Mellon University, Pittsburgh, PA"
   },
   {
     "class": "ocr_text",
-    "x0": 621.0,
-    "y0": 3458.0,
-    "confidence": 0.9897,
-    "text": "BaOhelor of Science | Computer Science and Engineering"
+    "x0": 413.0,
+    "y0": 2307.0,
+    "confidence": 0.975,
+    "text": "BaOhelor of Science|Computer Science and Engineering"
   },
   {
     "class": "ocr_text",
-    "x0": 2725.0,
-    "y0": 3503.0,
+    "x0": 1813.0,
+    "y0": 2333.0,
     "confidence": 1.0,
     "text": "2001"
   },
   {
     "class": "ocr_text",
-    "x0": 616.0,
-    "y0": 3536.0,
-    "confidence": 0.9999,
+    "x0": 411.0,
+    "y0": 2359.0,
+    "confidence": 0.9988,
     "text": "Amravati University, Shegaon, Maharashtra"
   }
 ]
