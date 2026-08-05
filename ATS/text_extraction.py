@@ -103,9 +103,7 @@ class TextExtraction:
                                     })
                                     full_text_stream.append(text)
 
-            # -------------------------------------------------------------
-            # BRANCH B: Scanned / Flattened PDF -> Tier 3 (PaddleOCR)
-            # -------------------------------------------------------------
+           
             if not full_text_stream:
                 print(f"⚠️ Triggering Tier 3 (PaddleOCR Engine) for {self.filename}...")
                 ocr_engine = get_paddle_ocr()
@@ -117,32 +115,37 @@ class TextExtraction:
                     img_np = np.array(img_pil)
 
                     # 2. Execute PaddleOCR inference
-                    results = ocr_engine.ocr(img_np, cls=True)
+                    results = ocr_engine.ocr(img_np)
 
                     if results and results[0]:
                         page_lines = []
                         for line in results[0]:
-                            # line format: [[[x0, y0], [x1, y0], [x1, y1], [x0, y1]], ("text", confidence)]
-                            box_coords, (text, confidence) = line
-                            cleaned_text = text.strip()
-                            
-                            if cleaned_text:
-                                # Extract top-left coordinate for layout tracking
-                                x0, y0 = box_coords[0][0], box_coords[0][1]
+                            try:
+                                # Safe index-based extraction to prevent unpacking errors
+                                box_coords = line[0]
+                                text_info = line[1]
                                 
-                                cleaned_sections.append({
-                                    "class": "ocr_text",
-                                    "x0": float(x0),
-                                    "y0": float(y0),
-                                    "confidence": round(float(confidence), 4),
-                                    "text": cleaned_text,
-                                })
-                                page_lines.append(cleaned_text)
+                                cleaned_text = str(text_info[0]).strip()
+                                confidence = float(text_info[1]) if len(text_info) > 1 else 1.0
+                                
+                                if cleaned_text:
+                                    # Extract top-left coordinate for layout tracking
+                                    x0, y0 = box_coords[0][0], box_coords[0][1]
+                                    
+                                    cleaned_sections.append({
+                                        "class": "ocr_text",
+                                        "x0": float(x0),
+                                        "y0": float(y0),
+                                        "confidence": round(confidence, 4),
+                                        "text": cleaned_text,
+                                    })
+                                    page_lines.append(cleaned_text)
+                            except Exception:
+                                continue # Skip any malformed detection lines safely
 
                         if page_lines:
                             full_text_stream.append("\n".join(page_lines))
-
-        return "\n".join(full_text_stream), cleaned_sections
+            return "\n".join(full_text_stream), cleaned_sections
 
     def _extract_docx(self, file_path: str) -> tuple[str, list[dict]]:
         doc = docx.Document(file_path)

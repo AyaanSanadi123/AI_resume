@@ -105,3 +105,8 @@ okay so now lets look into the test extraction layer ->
            │
            ▼
 [ Clean Raw Text String ] ──(Ready for Phase 2: Regex & Field Mapping)
+
+
+
+OCR implementation 
+$$\text{PDF Page} \xrightarrow{\text{Render to 300 DPI image}} \text{PNG Bytes in RAM} \xrightarrow{\text{PIL RGB Image}} \text{NumPy Matrix} \xrightarrow{\text{PaddleOCR Inference}}$$
