@@ -8,7 +8,8 @@ if platform.system() == "Windows":
     os.environ["PADDLE_PDX_ENABLE_MKLDNN_BYDEFAULT"] = "0"
     os.environ["FLAGS_use_mkldnn"] = "0"
 
-from text_extraction import TextExtraction  # Import your class safely now
+from text_extraction import TextExtraction
+from resume_parser import ResumeParser  # Import Phase 2
 
 # ------------------------------------------------------------------
 # 2. Mock UploadFile for local testing without running FastAPI
@@ -45,6 +46,9 @@ async def run_batch_tests(input_dir: str = "./test_resumes", output_dir: str = "
 
     print(f"🚀 Found {len(sample_files)} sample files. Starting extraction test...\n")
 
+    # Instantiate the parser once (Stateless Pipeline)
+    parser = ResumeParser()
+
     passed_count = 0
     failed_count = 0
 
@@ -58,23 +62,26 @@ async def run_batch_tests(input_dir: str = "./test_resumes", output_dir: str = "
             # Wrap local file in mock UploadFile
             mock_file = MockUploadFile(file_path)
             
-            # Execute your extraction pipeline
+            # PHASE 1: Text & Layout Extraction
             extractor = TextExtraction(mock_file)
             normalized_text, sections = await extractor.process()
 
+            # PHASE 2: Semantic Parsing (Regex + State Machine)
+            parsed_resume = parser.parse(normalized_text, sections)
+
             # Create individual output paths
             txt_output_path = os.path.join(output_dir, f"{base_name}_text.txt")
-            json_output_path = os.path.join(output_dir, f"{base_name}_sections.json")
+            json_output_path = os.path.join(output_dir, f"{base_name}_parsed.json")
 
-            # 1. Save normalized full text stream
+            # 1. Save normalized full text stream (for manual review if needed)
             with open(txt_output_path, "w", encoding="utf-8") as f:
                 f.write(normalized_text)
 
-            # 2. Save structured layout sections as formatted JSON
+            # 2. Save the final Structured JSON from Phase 2
             with open(json_output_path, "w", encoding="utf-8") as f:
-                json.dump(sections, f, indent=2, ensure_ascii=False)
+                json.dump(parsed_resume, f, indent=2, ensure_ascii=False)
 
-            print(f"    ✅ Success -> Output saved to '{output_dir}/'")
+            print(f"    ✅ Success -> Parsed output saved to '{output_dir}/{base_name}_parsed.json'")
             passed_count += 1
 
         except Exception as e:

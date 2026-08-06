@@ -7,6 +7,10 @@ python-docx
 paddlepaddle
 paddleocr
 numpy
+google-genai
+python-dotenv
+
+
 
 # use this version 
 # python@3.12
