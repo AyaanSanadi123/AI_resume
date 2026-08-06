@@ -8,7 +8,7 @@ import numpy as np
 import io 
 from fastapi import HTTPException, UploadFile
 from paddleocr import PaddleOCR
-from PIL import Image
+from PIL import Image, ImageOps
 
 # ------------------------------------------------------------------
 # Singleton / Lazy Loader for PaddleOCR
@@ -40,6 +40,113 @@ class TextExtraction:
             )
         return ext
 
+    def _ocr_with_smart_tiling(self, img_pil: Image.Image, ocr_engine) -> tuple[list[str], list[dict]]:
+        """Adds a 50px artificial white canvas border around the document to prevent 
+        margin clipping, splits large images into safe chunks, and subtracts padding offset.
+        """
+        padding = 50
+        # 1. Expand image boundaries with a 50px white canvas
+        padded_pil = ImageOps.expand(img_pil, border=padding, fill="white")
+        img_np = np.array(padded_pil)
+
+        total_height, total_width, _ = img_np.shape
+        max_chunk_height = 2200    # Safe height boundary well under side limits
+        search_window = 400        # Search window to look for safe section gaps
+        
+        current_y = 0
+        page_lines = []
+        page_sections = []
+
+        while current_y < total_height:
+            remaining_height = total_height - current_y
+
+            if remaining_height <= max_chunk_height:
+                actual_end_y = total_height
+            else:
+                tentative_end_y = current_y + max_chunk_height
+                window_start = max(current_y, tentative_end_y - search_window)
+                window_end = tentative_end_y
+                
+                # Slice search window and compute row variance (agnostic to background color)
+                search_slice = img_np[window_start:window_end, :]
+                row_variance = search_slice.var(axis=(1, 2))
+                
+                # Find the row with the LOWEST variance (flattest uniform gap)
+                best_relative_row = row_variance.argmin()
+                actual_end_y = window_start + best_relative_row
+                
+                # Safety fallback if variance logic picks an edge
+                if actual_end_y <= current_y:
+                    actual_end_y = tentative_end_y
+
+            # Crop the safe chunk
+            chunk_np = img_np[current_y:actual_end_y, :]
+            results = ocr_engine.ocr(chunk_np)
+
+            if results and results[0]:
+                res = results[0]
+
+                # --- FORMAT 1: PaddleX 3.7+ (Dictionary-like object) ---
+                if isinstance(res, dict) or hasattr(res, 'keys'):
+                    texts = res.get('rec_texts', []) or res.get('rec_text', [])
+                    boxes = res.get('dt_polys', []) or res.get('boxes', [])
+                    scores = res.get('rec_scores', []) or res.get('scores', [])
+                    
+                    for i in range(len(texts)):
+                        cleaned_text = str(texts[i]).strip()
+                        if cleaned_text:
+                            box = boxes[i] if i < len(boxes) else [[0.0, 0.0]]
+                            conf = scores[i] if i < len(scores) else 1.0
+                            
+                            rel_x0 = box[0][0]
+                            rel_y0 = box[0][1]
+                            
+                            # Subtract padding offset to normalize coordinates back to original PDF space
+                            abs_x0 = max(0.0, float(rel_x0) - padding)
+                            abs_y0 = max(0.0, float(rel_y0) + current_y - padding)
+
+                            page_sections.append({
+                                "class": "ocr_text",
+                                "x0": abs_x0,
+                                "y0": abs_y0,
+                                "confidence": round(float(conf), 4),
+                                "text": cleaned_text,
+                            })
+                            page_lines.append(cleaned_text)
+
+                # --- FORMAT 2: Legacy PaddleOCR (List of Lists) ---
+                elif isinstance(res, list):
+                    for line in res:
+                        try:
+                            box_coords = line[0]
+                            text_info = line[1]
+                            
+                            cleaned_text = str(text_info[0]).strip()
+                            confidence = float(text_info[1]) if len(text_info) > 1 else 1.0
+                            
+                            if cleaned_text:
+                                rel_x0 = box_coords[0][0]
+                                rel_y0 = box_coords[0][1]
+                                
+                                # Subtract padding offset to normalize coordinates back to original PDF space
+                                abs_x0 = max(0.0, float(rel_x0) - padding)
+                                abs_y0 = max(0.0, float(rel_y0) + current_y - padding)
+
+                                page_sections.append({
+                                    "class": "ocr_text",
+                                    "x0": abs_x0,
+                                    "y0": abs_y0,
+                                    "confidence": round(float(confidence), 4),
+                                    "text": cleaned_text,
+                                })
+                                page_lines.append(cleaned_text)
+                        except Exception as e:
+                            print(f"   ⚠️ Warning: Skipped OCR line due to parsing error: {e}")
+
+            current_y = actual_end_y
+
+        return page_lines, page_sections
+
     def _extract_pdf(self, file_path: str) -> tuple[str, list[dict]]:
         cleaned_sections = []
         full_text_stream = []
@@ -66,7 +173,6 @@ class TextExtraction:
 
                             box_lines = []
                             for line in box.get("textlines", []):
-                                # FIX: Join spans with explicit spaces to prevent "sticky text"
                                 spans_text = [
                                     span.get("text", "").strip() 
                                     for span in line.get("spans", []) 
@@ -104,83 +210,24 @@ class TextExtraction:
                                     full_text_stream.append(text)
 
             # -------------------------------------------------------------
-            # BRANCH B: Scanned / Flattened PDF -> Tier 3 (PaddleOCR)
+            # BRANCH B: Scanned / Flattened PDF -> Tier 3 (Smart Tiling OCR)
             # -------------------------------------------------------------
             if not full_text_stream:
-                print(f"⚠️ Triggering Tier 3 (PaddleOCR Engine) for {self.filename}...")
+                print(f"⚠️ Triggering Tier 3 (Smart Tiling OCR Engine) for {self.filename}...")
                 ocr_engine = get_paddle_ocr()
 
                 for page in doc:
-                    # 1. Render PDF page to high-res image (300 DPI) in RAM
-                    pix = page.get_pixmap(dpi=200)
+                    # 1. Render PDF page at full 300 DPI in RAM without resizing limits
+                    pix = page.get_pixmap(dpi=300)
                     img_pil = Image.open(io.BytesIO(pix.tobytes("png"))).convert("RGB")
 
-                    max_size = 3800
-                    if max(img_pil.size) > max_size:
-                        img_pil.thumbnail((max_size, max_size), Image.Resampling.LANCZOS)
-
-                    img_np = np.array(img_pil)
-                    # 2. Execute PaddleOCR inference
-                    results = ocr_engine.ocr(img_np)
-
-                    if not results or not results[0]:
-                        continue
-                    
-                    res = results[0]
-                    page_lines = []
-
-                    # --- FORMAT 1: PaddleX 3.7+ (Dictionary-like object) ---
-                    if isinstance(res, dict) or hasattr(res, 'keys'):
-                        # The new backend stores lists inside these keys
-                        texts = res.get('rec_texts', []) or res.get('rec_text', [])
-                        boxes = res.get('dt_polys', []) or res.get('boxes', [])
-                        scores = res.get('rec_scores', []) or res.get('scores', [])
-                        
-                        for i in range(len(texts)):
-                            cleaned_text = str(texts[i]).strip()
-                            if cleaned_text:
-                                # Safely get coordinates and confidence
-                                box = boxes[i] if i < len(boxes) else [[0.0, 0.0]]
-                                conf = scores[i] if i < len(scores) else 1.0
-                                
-                                x0, y0 = box[0][0], box[0][1]
-                                
-                                cleaned_sections.append({
-                                    "class": "ocr_text",
-                                    "x0": float(x0),
-                                    "y0": float(y0),
-                                    "confidence": round(float(conf), 4),
-                                    "text": cleaned_text,
-                                })
-                                page_lines.append(cleaned_text)
-
-                    # --- FORMAT 2: Legacy PaddleOCR (List of Lists) ---
-                    elif isinstance(res, list):
-                        for line in res:
-                            try:
-                                box_coords = line[0]
-                                text_info = line[1]
-                                
-                                cleaned_text = str(text_info[0]).strip()
-                                confidence = float(text_info[1]) if len(text_info) > 1 else 1.0
-                                
-                                if cleaned_text:
-                                    x0, y0 = box_coords[0][0], box_coords[0][1]
-                                    cleaned_sections.append({
-                                        "class": "ocr_text",
-                                        "x0": float(x0),
-                                        "y0": float(y0),
-                                        "confidence": round(float(confidence), 4),
-                                        "text": cleaned_text,
-                                    })
-                                    page_lines.append(cleaned_text)
-                            except Exception as e:
-                                print(f"   ⚠️ Warning: Skipped OCR line due to parsing error: {e}")
+                    # 2. Execute Smart Tiling OCR pipeline with padded borders
+                    page_lines, page_sections = self._ocr_with_smart_tiling(img_pil, ocr_engine)
 
                     if page_lines:
+                        cleaned_sections.extend(page_sections)
                         full_text_stream.append("\n".join(page_lines))
         
-        # ---> FIX: Properly indented to execute for BOTH Branch A and Branch B <---
         return "\n".join(full_text_stream), cleaned_sections
 
     def _extract_docx(self, file_path: str) -> tuple[str, list[dict]]:
