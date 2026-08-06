@@ -1,212 +1,212 @@
 [
   {
     "class": "ocr_text",
-    "x0": 291.0,
-    "y0": 80.0,
-    "confidence": 0.9985,
+    "x0": 192.0,
+    "y0": 53.0,
+    "confidence": 1.0,
     "text": "Federal Resume - Sample 1 (Entry-level Accounting)"
   },
   {
     "class": "ocr_text",
-    "x0": 607.0,
-    "y0": 240.0,
-    "confidence": 0.9999,
+    "x0": 401.0,
+    "y0": 159.0,
+    "confidence": 0.9982,
     "text": "Julie A. McFederal"
   },
   {
     "class": "ocr_text",
-    "x0": 550.0,
-    "y0": 323.0,
-    "confidence": 0.9958,
+    "x0": 365.0,
+    "y0": 216.0,
+    "confidence": 0.9989,
     "text": "11111 Shaw Avenue; Fresno, CA 93740"
   },
   {
     "class": "ocr_text",
-    "x0": 478.0,
-    "y0": 375.0,
-    "confidence": 0.9995,
+    "x0": 316.0,
+    "y0": 250.0,
+    "confidence": 0.9989,
     "text": "(559) 333-4555 (home); (559) 123-4567 (mobile)"
   },
   {
     "class": "ocr_text",
-    "x0": 637.0,
-    "y0": 433.0,
+    "x0": 420.0,
+    "y0": 290.0,
     "confidence": 0.9999,
     "text": "julie.mcfederal@jobsnet.com"
   },
   {
     "class": "ocr_text",
-    "x0": 76.0,
-    "y0": 508.0,
-    "confidence": 0.9937,
-    "text": "SSN: 222-22-2222"
+    "x0": 41.0,
+    "y0": 336.0,
+    "confidence": 0.9989,
+    "text": "SSN:222-22-2222"
   },
   {
     "class": "ocr_text",
-    "x0": 74.0,
-    "y0": 566.0,
-    "confidence": 0.9999,
+    "x0": 40.0,
+    "y0": 374.0,
+    "confidence": 1.0,
     "text": "Citizenship: U.S."
   },
   {
     "class": "ocr_text",
-    "x0": 73.0,
-    "y0": 622.0,
-    "confidence": 0.9822,
+    "x0": 40.0,
+    "y0": 413.0,
+    "confidence": 0.9883,
     "text": "Veterans Preference: N/A"
   },
   {
     "class": "ocr_text",
-    "x0": 74.0,
-    "y0": 679.0,
-    "confidence": 1.0,
+    "x0": 40.0,
+    "y0": 451.0,
+    "confidence": 0.9999,
     "text": "Federal Status: N/A"
   },
   {
     "class": "ocr_text",
-    "x0": 73.0,
-    "y0": 790.0,
-    "confidence": 0.9992,
+    "x0": 38.0,
+    "y0": 524.0,
+    "confidence": 0.9977,
     "text": "OBJECTIVE:"
   },
   {
     "class": "ocr_text",
-    "x0": 74.0,
-    "y0": 857.0,
-    "confidence": 0.9959,
-    "text": "Seeking an entry-level position with Internal Revenue Service (Vacancy Announcement #: PH-"
+    "x0": 36.0,
+    "y0": 568.0,
+    "confidence": 0.997,
+    "text": "Seeking an entry-level position with Internal Revenue Service (Vacancy Announcement #; PH-"
   },
   {
     "class": "ocr_text",
-    "x0": 73.0,
-    "y0": 916.0,
-    "confidence": 0.9997,
+    "x0": 37.0,
+    "y0": 611.0,
+    "confidence": 0.9999,
     "text": "NM-09-149319-S16)"
   },
   {
     "class": "ocr_text",
-    "x0": 75.0,
-    "y0": 1035.0,
-    "confidence": 0.999,
+    "x0": 36.0,
+    "y0": 693.0,
+    "confidence": 0.9994,
     "text": "QUALIFICATIONS PROFILE:"
   },
   {
     "class": "ocr_text",
-    "x0": 74.0,
-    "y0": 1094.0,
-    "confidence": 0.9979,
+    "x0": 37.0,
+    "y0": 736.0,
+    "confidence": 0.9946,
     "text": "Current college student majoring in business administration with an emphasis in accounting"
   },
   {
     "class": "ocr_text",
-    "x0": 74.0,
-    "y0": 1149.0,
-    "confidence": 0.9992,
+    "x0": 38.0,
+    "y0": 773.0,
+    "confidence": 0.9979,
     "text": "graduating next May 2010. I have participated in various class projects focusing on accounting in"
   },
   {
     "class": "ocr_text",
-    "x0": 74.0,
-    "y0": 1203.0,
-    "confidence": 0.9949,
-    "text": "Financial, Managerial and Tax Accounting & Planning. My greatest strengths are being able to"
+    "x0": 37.0,
+    "y0": 809.0,
+    "confidence": 0.9954,
+    "text": "Financial, Managerial and Tax Accounting & Planning.My greatest strengths are being able to"
   },
   {
     "class": "ocr_text",
-    "x0": 74.0,
-    "y0": 1258.0,
-    "confidence": 0.9996,
+    "x0": 37.0,
+    "y0": 848.0,
+    "confidence": 0.9957,
     "text": "analyze large amounts of data, being detail-oriented, very skilled with Microsoft Excel giving me"
   },
   {
     "class": "ocr_text",
-    "x0": 75.0,
-    "y0": 1314.0,
-    "confidence": 1.0,
+    "x0": 36.0,
+    "y0": 884.0,
+    "confidence": 0.994,
     "text": "the capability to produce complex financial statements and one who works well under pressure."
   },
   {
     "class": "ocr_text",
-    "x0": 76.0,
-    "y0": 1428.0,
-    "confidence": 0.9997,
+    "x0": 37.0,
+    "y0": 957.0,
+    "confidence": 0.9996,
     "text": "EDUCATION:"
   },
   {
     "class": "ocr_text",
-    "x0": 76.0,
-    "y0": 1484.0,
-    "confidence": 0.9986,
-    "text": "California State University, Fresno (Fresno State), Fresno, CA 93740"
+    "x0": 35.0,
+    "y0": 999.0,
+    "confidence": 0.9999,
+    "text": "California State University, Fresno (Fresno State), Fresno,CA 93740"
   },
   {
     "class": "ocr_text",
-    "x0": 1544.0,
-    "y0": 1501.0,
+    "x0": 1037.0,
+    "y0": 999.0,
     "confidence": 1.0,
     "text": "5/2010"
   },
   {
     "class": "ocr_text",
-    "x0": 143.0,
-    "y0": 1547.0,
-    "confidence": 0.9992,
+    "x0": 81.0,
+    "y0": 1044.0,
+    "confidence": 0.9999,
     "text": "B.S. in Business Administration; Option: Accountancy"
   },
   {
     "class": "ocr_text",
-    "x0": 144.0,
-    "y0": 1604.0,
-    "confidence": 0.9917,
+    "x0": 82.0,
+    "y0": 1080.0,
+    "confidence": 0.9818,
     "text": "Dean's List (GPA: 3.75/4.0), Total Units: 122"
   },
   {
     "class": "ocr_text",
-    "x0": 77.0,
-    "y0": 1716.0,
-    "confidence": 0.9997,
+    "x0": 34.0,
+    "y0": 1156.0,
+    "confidence": 0.9814,
     "text": "Fresno City College, Fresno, CA 93741"
   },
   {
     "class": "ocr_text",
-    "x0": 1531.0,
-    "y0": 1740.0,
-    "confidence": 0.9991,
+    "x0": 1030.0,
+    "y0": 1160.0,
+    "confidence": 0.9994,
     "text": "12/xxxx"
   },
   {
     "class": "ocr_text",
-    "x0": 133.0,
-    "y0": 1778.0,
-    "confidence": 0.9943,
+    "x0": 72.0,
+    "y0": 1199.0,
+    "confidence": 0.9998,
     "text": "A.A. in General Studies"
   },
   {
     "class": "ocr_text",
-    "x0": 133.0,
-    "y0": 1831.0,
-    "confidence": 0.9811,
-    "text": "Dean's List (GPA: 3.35/4.0). Total Units: xxx"
+    "x0": 70.0,
+    "y0": 1235.0,
+    "confidence": 0.9989,
+    "text": "Dean's List (GPA: 3.35/4.0), Total Units: xxx"
   },
   {
     "class": "ocr_text",
-    "x0": 26.0,
-    "y0": 1903.0,
-    "confidence": 1.0,
+    "x0": 33.0,
+    "y0": 1313.0,
+    "confidence": 0.9971,
     "text": "Buchanan High School, Clovis, CA 93611"
   },
   {
     "class": "ocr_text",
-    "x0": 1590.0,
-    "y0": 1908.0,
-    "confidence": 0.9929,
+    "x0": 1045.0,
+    "y0": 1317.0,
+    "confidence": 0.9984,
     "text": "6/xxxx"
   },
   {
     "class": "ocr_text",
-    "x0": 78.0,
-    "y0": 1976.0,
-    "confidence": 0.9996,
+    "x0": 70.0,
+    "y0": 1357.0,
+    "confidence": 1.0,
     "text": "High School Diploma"
   }
 ]

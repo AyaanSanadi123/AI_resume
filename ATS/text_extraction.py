@@ -19,7 +19,11 @@ def get_paddle_ocr():
     global _PADDLE_OCR_ENGINE
     if _PADDLE_OCR_ENGINE is None:
         # Instantiate safely inside the lazy loader function
-        _PADDLE_OCR_ENGINE = PaddleOCR(use_angle_cls=True, lang="en")
+        _PADDLE_OCR_ENGINE = PaddleOCR(
+            use_angle_cls=True, 
+            lang="en",
+            det_limit_side_len=2500  # <--- The "Goldilocks" Limit
+        )
     return _PADDLE_OCR_ENGINE
 
 class TextExtraction:
@@ -217,8 +221,8 @@ class TextExtraction:
                 ocr_engine = get_paddle_ocr()
 
                 for page in doc:
-                    # 1. Render PDF page at full 300 DPI in RAM without resizing limits
-                    pix = page.get_pixmap(dpi=300)
+                    # 1. Render PDF page at Goldilocks DPI (200) to protect Receptive Field
+                    pix = page.get_pixmap(dpi=200)
                     img_pil = Image.open(io.BytesIO(pix.tobytes("png"))).convert("RGB")
 
                     # 2. Execute Smart Tiling OCR pipeline with padded borders
