@@ -9,7 +9,7 @@ paddleocr
 numpy
 google-genai
 python-dotenv
-
+pandas
 
 
 # use this version 
