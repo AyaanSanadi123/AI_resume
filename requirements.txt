@@ -12,5 +12,10 @@ python-dotenv
 
 
 
+# added for adaptive_interview
+google-generativeai
+pydantic
+python-dotenv
+
 # use this version 
 # python@3.12
