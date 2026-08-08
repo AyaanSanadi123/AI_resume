@@ -12,25 +12,27 @@ def run_evaluation_tests():
     with open(resume_file, "r", encoding="utf-8") as f:
         ayaan_resume = json.load(f)
 
-    # 2. Initialize the Matching Engine (Loads DB and Model)
+    # 2. Initialize the Matching Engine
     print("Initializing Semantic Matcher...\n")
-    matcher = SemanticMatcher(db_path="jobs_database.json")
+    matcher = SemanticMatcher(db_path="data/job_dataset.json")
 
     # 3. Target roles from the database to test against
     test_roles = [
-        "Sr Human Resource Generalist", 
-        "Human Resources Manager"
+        "AI Engineer - Fresher",
+        ".NET Developer",
+        "Data Scientist - Entry Level",
+        "Cloud Engineer - Fresher",
+        "Backend Developer - Entry Level"
     ]
 
     # 4. Execute the match loop
     for role in test_roles:
         print(f"Evaluating profile against: {role}...")
         
-        result = matcher.calculate_match(ayaan_resume, role)
-        
-        if not result or "error" in result:
-            print(f"❌ Role '{role}' not found in database.\n")
-            print("-" * 50)
+        try:
+            result = matcher.calculate_match(ayaan_resume, role)
+        except ValueError as e:
+            print(f"❌ {e}\n" + "-" * 50)
             continue
             
         print(f"✅ Match Score: {result['match_score']}%")
