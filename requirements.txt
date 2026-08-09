@@ -10,7 +10,7 @@ numpy
 google-genai
 python-dotenv
 pandas
-
-
+sentence-transformers
+scikit-learn
 # use this version 
 # python@3.12
