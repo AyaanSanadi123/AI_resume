@@ -12,6 +12,9 @@ python-dotenv
 pandas
 sentence-transformers
 scikit-learn
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3adf13550c4e89a92d6ae59cf03c68af2c88621f
 # use this version 
 # python@3.12

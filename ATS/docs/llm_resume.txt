@@ -1,0 +1,44 @@
+this is just a place where i write down my personal notes.
+the task is to design a llm interface that can recommend updates to peoples resumes,
+
+So ive decided to break this problem into diff tasks to better solve this 
+
+1. What Can a Resume Improve On?
+
+the skill gap -> what domain / technologies are missing 
+the impact gap -> did they provide quantifiable metrics and results?
+the Trajectory/Pivot Gap -> Does their past experience make sense for this new role?
+
+we need to figure out a way to provide all this info to the llm from the semantic matcher... 
+and also keep this info lean, we dont want to hit geminis rate limits
+
+
+2. The Context Problem: Keeping It Lean
+
+currently the semantic matcher returns a json object that looks like this 
+{
+  "candidate_summary": "Computer Vision & ML Engineer...",
+  "candidate_projects": ["Engineered end-to-end object detection pipelines..."],
+  "target_role": "DevOps Engineer",
+  "match_score": 45.2,
+  "missing_skills": ["kubernetes", "docker", "aws", "ci/cd"]
+}
+
+now the real question is, Is this info enough to effectivly answer the first three criteria? 
+or do we need to modify this and add more info?
+
+
+3. The Pivot vs. The Climber
+
+the pivot -> if someone decides to switch their entire field of work
+say from hr to swe, the advice the llm needs to give must be very different from,
+
+the climber -> a junior dev trying to apply for higher position? 
+the llm needs to understand this context and be able to give useful advice 
+
+
+4. The Leverage Problem: Forcing High-Impact Advice
+there maybe many things wrong with someones resume,
+but there are 1-3 things that have the most leverage, and the llm needs to understand this and 
+give a consise response to keep the output lean and not hit rate limits 
+
