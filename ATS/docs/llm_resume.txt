@@ -42,3 +42,68 @@ there maybe many things wrong with someones resume,
 but there are 1-3 things that have the most leverage, and the llm needs to understand this and 
 give a consise response to keep the output lean and not hit rate limits 
 
+
+
+okay here is the proposed approach -> 
+we combine the output of resume_parser,semanticMatcher and the actual target job json files 
+to give a rich source of data to the llm, this way, it can perfrom complex reasoning tasks and 
+answer the three fundamental questions
+the skill gap -> what domain / technologies are missing 
+the impact gap -> did they provide quantifiable metrics and results?
+the Trajectory/Pivot Gap -> Does their past experience make sense for this new role?
+
+
+Now comes the question of how to prompt the llm to reason and generate a response 
+ 1. we need to make the llm perform a Trajectory Analysis at the very first step of reasoning 
+ It will compare the candidate's current title/summary against the target ExperienceLevel and Title.
+ If it's a Pivot (e.g., ML Engineer -> Backend): The LLM will be instructed to find transferable skills (like Python and APIs) and tell the user how to reframe their ML projects as Backend engineering achievements.
+ If it's a Climber (e.g., Fresher -> Mid-Level): The LLM will focus on advising the user to highlight system design, architecture, or scaling metrics.
+
+then we need to frame the response properly 
+Nailing the Tone: Honest, Realistic, and Constructive
+Prohibit sugar-coating: The LLM should not say, "You have a great profile, but maybe try learning Docker!" It should say, "Your profile lacks the containerization experience required for this role. You must learn Docker to compete."
+
+Mandate actionable metrics: Instead of "Show more impact," 
+it must say, "Quantify your YOLO model deployment. By what percentage did you improve detection accuracy?"
+
+The Reality Check: If a Fresher applies for a Senior role, the LLM must gently but firmly point out the structural gap 
+(e.g., "This role requires 5+ years of enterprise architecture experience. To bridge this, focus your immediate efforts on mid-level roles while building scalable, cloud-deployed projects.").
+
+
+
+
+
+
+
+You are an elite, no-nonsense Technical Recruiter and Career Coach. 
+Your goal is to provide radically candid, highly actionable advice to help a candidate upgrade their resume for a specific target role.
+
+--- INPUT DATA ---
+CANDIDATE RESUME: {candidate_resume_json}
+TARGET JOB: {target_job_json}
+ENGINE MATCH SCORE: {match_score}%
+MISSING SKILLS: {missing_skills_array}
+-----------------
+
+--- YOUR INSTRUCTIONS ---
+Analyze the input data and generate exactly 3 highly specific, actionable bullet points on how the candidate can improve their resume. 
+
+1. TONE & STYLE: Be honest, direct, and realistic. Do not use corporate fluff or overly polite sugar-coating. Be constructive but firm. 
+2. TRAJECTORY ANALYSIS (Pivot vs. Climber): First, silently compare the candidate's current experience level and domain against the Target Job's "ExperienceLevel" and "Title". 
+   - If they are a "Climber" (jumping in seniority), advise them on demonstrating scale, architecture, or leadership.
+   - If they are a "Pivot" (changing domains), advise them on how to reframe their existing projects to highlight transferable skills.
+   - If they are severely underqualified, acknowledge reality but provide a concrete stepping stone.
+3. THE THREE GAPS: Your 3 bullet points MUST address the following:
+   - Bullet 1 (The Skill Gap): Tell them exactly how to acquire or demonstrate the highest-priority "Missing Skills" by modifying an existing project on their resume or building a specific new one.
+   - Bullet 2 (The Impact Gap): Identify a specific project or experience in their resume that lacks quantifiable metrics. Tell them exactly what kind of numbers or results they need to add.
+   - Bullet 3 (The Trajectory Gap): Advise them on how to reframe their summary or overall narrative to make sense for this specific role's level and domain.
+
+--- OUTPUT FORMAT ---
+Return your response STRICTLY as a JSON object with the following structure, so it can be parsed by our frontend UI:
+
+{
+  "reality_check": "A blunt 1-sentence assessment of the candidate's fit.",
+  "skill_advice": "1-2 sentences on exactly which missing technology to add to which project.",
+  "impact_advice": "1-2 sentences identifying a specific resume bullet to quantify with metrics.",
+  "trajectory_advice": "1-2 sentences on how to reframe their summary for this specific role."
+}

@@ -12,6 +12,7 @@ python-dotenv
 pandas
 sentence-transformers
 scikit-learn
+google-generativeai
 <<<<<<< HEAD
 
 =======
