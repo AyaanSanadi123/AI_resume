@@ -1,0 +1,194 @@
+[
+  {
+    "class": "section-header",
+    "x0": 219.8671875,
+    "y0": 49.72265625,
+    "text": "Ayaan Sanadi"
+  },
+  {
+    "class": "section-header",
+    "x0": 154.640625,
+    "y0": 83.44921875,
+    "text": "Computer Vision & ML Engineer | Bengaluru, India"
+  },
+  {
+    "class": "text",
+    "x0": 49.0078125,
+    "y0": 103.263427734375,
+    "text": "ayaansanadi8@gmail.com | +91 9353670602 | github.com/AyaanSanadi123 | linkedin.com/in/ayaan-sanadi"
+  },
+  {
+    "class": "section-header",
+    "x0": 42.75,
+    "y0": 134.35977172851562,
+    "text": "CORE SKILLS"
+  },
+  {
+    "class": "text",
+    "x0": 42.75,
+    "y0": 161.763427734375,
+    "text": "Programming Languages: Python, JavaScript, C, C++ Machine Learning : YOLO, MediaPipe, TensorFlow Lite (Micro), PyTorch Frameworks & Tools: FastAPI, OpenCV, Next.js, Git"
+  },
+  {
+    "class": "text",
+    "x0": 42.75,
+    "y0": 210.513427734375,
+    "text": "DataBases: PostgreSQL, MongoDB"
+  },
+  {
+    "class": "section-header",
+    "x0": 42.75,
+    "y0": 239.35977172851562,
+    "text": "PROFESSIONAL EXPERIENCE"
+  },
+  {
+    "class": "text",
+    "x0": 42.75,
+    "y0": 267.5677490234375,
+    "text": "Computer Vision Intern – Neuronetic Vision Jan 2026 – Apr 2026"
+  },
+  {
+    "class": "list-item",
+    "x0": 57.75,
+    "y0": 286.44287109375,
+    "text": "Engineered end-to-end object detection pipelines by scraping, cleaning, and annotating complex image datasets to prepare high-quality training data for YOLO models."
+  },
+  {
+    "class": "list-item",
+    "x0": 57.75,
+    "y0": 318.164794921875,
+    "text": "Trained, fine-tuned, and deployed YOLO models for real-time CCTV security systems, achieving robust detection of weapons (knives, handguns) and public spitting violations."
+  },
+  {
+    "class": "list-item",
+    "x0": 57.75,
+    "y0": 350.86083984375,
+    "text": "Developed automated vision solutions for warehouse and facility management, creating models capable of identifying pests (rats) and detecting two-wheeler license plates in varied lighting conditions."
+  },
+  {
+    "class": "section-header",
+    "x0": 42.75,
+    "y0": 395.3597717285156,
+    "text": "PROJECTS"
+  },
+  {
+    "class": "section-header",
+    "x0": 42.75,
+    "y0": 422.7335510253906,
+    "text": "Real-Time AI Smart Attendance & Analytics Pipeline"
+  },
+  {
+    "class": "list-item",
+    "x0": 57.75,
+    "y0": 441.61083984375,
+    "text": "Automated classroom attendance for 70+ students by engineering a production-ready computer vision pipeline utilizing YOLOv8-face and InceptionResnetV1 for live facial feature extraction."
+  },
+  {
+    "class": "list-item",
+    "x0": 57.75,
+    "y0": 474.513427734375,
+    "text": "Maintained high FPS and prevented ID-switching by architecting a \"Two-Brain\" tracking system that paired short-term physics tracking (DeepOCSORT/Kalman filters) with long-term logical memory."
+  },
+  {
+    "class": "list-item",
+    "x0": 57.75,
+    "y0": 506.414794921875,
+    "text": "Accelerated real-time video processing by offloading tensor operations to Apple Silicon (MPS backend), matching live frames to a vectorized master database via cosine similarity."
+  },
+  {
+    "class": "list-item",
+    "x0": 57.75,
+    "y0": 539.013427734375,
+    "text": "Streamlined administrative reporting by integrating a Supabase (PostgreSQL) backend to translate AI outputs into official university registry data and dynamic CSV reports."
+  },
+  {
+    "class": "section-header",
+    "x0": 42.75,
+    "y0": 577.2222900390625,
+    "text": "AI-Powered Acoustic Pest Detection System (Edge AI / TinyML)"
+  },
+  {
+    "class": "text",
+    "x0": 57.75,
+    "y0": 596.763427734375,
+    "text": "Detected agricultural pest infestations in real-time by deploying an INT8 post-training quantized CNN (under 65KB footprint) onto an ESP32 microcontroller using TFLite Micro."
+  },
+  {
+    "class": "list-item",
+    "x0": 57.75,
+    "y0": 629.013427734375,
+    "text": "Replicated Python's Librosa library at the edge by building a custom C++ Digital Signal Processing (DSP) pipeline, converting raw 16kHz audio into Mel-Spectrograms on the hardware."
+  },
+  {
+    "class": "list-item",
+    "x0": 57.75,
+    "y0": 660.914794921875,
+    "text": "Prevented micro-controller RAM overflow and hardware-level tensor corruption by manually forcing 16- byte memory alignment and dynamically shifting massive audio arrays to the Heap."
+  },
+  {
+    "class": "list-item",
+    "x0": 57.75,
+    "y0": 693.61083984375,
+    "text": "Eliminated false-positive alerts by designing a 5-step rolling buffer with \"3-out-of-5\" voting logic, pushing verified HTTP POST alerts to a responsive Next.js dashboard."
+  },
+  {
+    "class": "section-header",
+    "x0": 42.75,
+    "y0": 45.567752838134766,
+    "text": "FormCheck AI: Real-Time Biomechanics Analysis"
+  },
+  {
+    "class": "list-item",
+    "x0": 57.75,
+    "y0": 64.263427734375,
+    "text": "Built an AI-driven gym safety platform leveraging MediaPipe and OpenCV to perform real-time kinematic analysis and pose estimation for compound lifts."
+  },
+  {
+    "class": "list-item",
+    "x0": 57.75,
+    "y0": 97.44287109375,
+    "text": "Delivered instant corrective audio cues and post-set analytics by implementing a custom validation pipeline that cross-referenced user form against domain-specific strength training metrics."
+  },
+  {
+    "class": "section-header",
+    "x0": 42.75,
+    "y0": 135.48353576660156,
+    "text": "BirdSpec: End-to-End Species Detection Pipeline"
+  },
+  {
+    "class": "list-item",
+    "x0": 57.75,
+    "y0": 153.914794921875,
+    "text": "Classified 483 bird species by training a lightweight EfficientNet-V2 CNN on a dataset of 60,000+ images, handling high inter-class similarity and morphological differences."
+  },
+  {
+    "class": "list-item",
+    "x0": 57.75,
+    "y0": 186.61083984375,
+    "text": "Deployed the inference engine via a FastAPI service and integrated it with a Next.js front-end and Supabase backend for user history tracking and Wikipedia context lookups."
+  },
+  {
+    "class": "section-header",
+    "x0": 42.75,
+    "y0": 231.10977172851562,
+    "text": "EDUCATION"
+  },
+  {
+    "class": "section-header",
+    "x0": 42.75,
+    "y0": 258.4835510253906,
+    "text": "BMS Institute of Technology and Management"
+  },
+  {
+    "class": "text",
+    "x0": 495.10546875,
+    "y0": 259.632568359375,
+    "text": "2024 – 2028"
+  },
+  {
+    "class": "text",
+    "x0": 42.75,
+    "y0": 276.914794921875,
+    "text": "B.E. in Artificial Intelligence & Machine Learning | CGPA: 8.6"
+  }
+]
