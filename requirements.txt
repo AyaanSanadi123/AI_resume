@@ -13,6 +13,10 @@ pandas
 sentence-transformers
 scikit-learn
 google-generativeai
+Jinja2
+weasyprint
+#for mac 
+#pango
 <<<<<<< HEAD
 
 =======
