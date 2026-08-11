@@ -49,3 +49,29 @@ The score is 90/100 because it has a clean single-column layout. Do not recalcul
 3. Phase 3: The Unified LLM Output (The Master Scorecard)
 Because the LLM now has both the structural context (from our math) and the semantic context (from reading the text), 
 it can evaluate the remaining 4 pillars and synthesize a holistic report in one shot.
+
+
+
+we need to talk about this one Deterministic function,
+calculate_structural_health, this is used to find how well formatted the resume is,
+does it have multiple columns and tables or is it ATS friendly? 
+
+first we decided to use Standard Deviation of all the x0 coordinates,
+but that failed,
+The Idea: We assumed that in a single-column resume, 
+all the text is neatly stacked on the left side of the page (around $x_0 = 40$ to $60$). 
+Therefore, if we calculated the Standard Deviation (which measures how far apart a set of numbers are from their average), 
+a single-column resume would have a very low score. A two-column resume would have half its text at $x_0 = 50$ and the other half at $x_0 = 350$, resulting in a massive spread and a high standard deviation score.
+
+
+
+Why it Failed: Standard deviation is highly sensitive to outliers.
+When we ran your resume through this math, 
+it looked at these coordinates:  Most of your text starts at x0: 42.75.  
+Your bullet points start at x0: 57.75.  
+The Outlier: Your graduation date ("2024 – 2028") is right-aligned on the page at x0: 495.10.  
+Because standard deviation squares the distance of every point from the average, that single right-aligned date pulled the entire mathematical average completely out of whack. 
+The algorithm saw that number and essentially panicked, thinking: "There is text all the way at 495! This must be a massive second column!"
+
+The Lesson: Standard deviation is "dumb" to the context of resume design. 
+It aggressively punishes standard, harmless formatting like right-aligned dates or centered headers.
