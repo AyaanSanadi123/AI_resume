@@ -100,25 +100,25 @@ def test_difficulty_allocation_matrix():
             expert=0.00,
         ),
         "missing_skills": DifficultyDistribution(
-            easy=0.00,
+            easy=1.00,
             medium=0.00,
             hard=0.00,
             expert=0.00,
         ),
         "behavioral": DifficultyDistribution(
-            easy=0.00,
+            easy=1.00,
             medium=0.00,
             hard=0.00,
             expert=0.00,
         ),
         "trajectory": DifficultyDistribution(
-            easy=0.00,
+            easy=1.00,
             medium=0.00,
             hard=0.00,
             expert=0.00,
         ),
         "experience": DifficultyDistribution(
-            easy=0.00,
+            easy=1.00,
             medium=0.00,
             hard=0.00,
             expert=0.00,
@@ -279,28 +279,28 @@ def test_difficulty_allocation_is_deterministic():
             ),
 
             "missing_skills": DifficultyDistribution(
-                easy=0.00,
+                easy=1.00,
                 medium=0.00,
                 hard=0.00,
                 expert=0.00,
             ),
 
             "behavioral": DifficultyDistribution(
-                easy=0.00,
+                easy=1.00,
                 medium=0.00,
                 hard=0.00,
                 expert=0.00,
             ),
 
             "trajectory": DifficultyDistribution(
-                easy=0.00,
+                easy=1.00,
                 medium=0.00,
                 hard=0.00,
                 expert=0.00,
             ),
 
             "experience": DifficultyDistribution(
-                easy=0.00,
+                easy=1.00,
                 medium=0.00,
                 hard=0.00,
                 expert=0.00,

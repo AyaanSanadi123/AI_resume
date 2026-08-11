@@ -8,7 +8,11 @@ from .services.gemini_client import GeminiClient
 from .engine.knowledge_discovery import KnowledgeDiscoveryEngine
 from .engine.priority_analyzer import PriorityAnalyzerEngine
 from .engine.difficulty_assessor import DifficultyAssessorEngine
-from .engine.allocation_engine import allocate_categories
+# from .engine.allocation_engine import allocate_categories
+from .engine.allocation_engine import (
+    allocate_categories,
+    allocate_difficulty_matrix,
+)
 from .engine.blueprint_builder import BlueprintBuilder
 from .engine.question_generator import QuestionGeneratorEngine
 from .models.question_bank import QuestionBank
@@ -80,10 +84,20 @@ class AdaptiveInterviewPipeline:
             constraints=self.constraints
         )
         
+        # interview_blueprint = self.blueprint_builder.build(
+        #     total_questions=total_questions,
+        #     category_allocations=category_allocations,
+        #     difficulty_assessment=difficulty_assessment
+        # )
+        difficulty_matrix = allocate_difficulty_matrix(
+            category_allocations=category_allocations,
+            difficulty_assessment=difficulty_assessment,
+        )
+
         interview_blueprint = self.blueprint_builder.build(
             total_questions=total_questions,
             category_allocations=category_allocations,
-            difficulty_assessment=difficulty_assessment
+            difficulty_matrix=difficulty_matrix,
         )
         
         question_bank = self.question_generator.generate(

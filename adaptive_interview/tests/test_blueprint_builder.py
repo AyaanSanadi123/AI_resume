@@ -1,75 +1,116 @@
 from adaptive_interview.models.category_priority import Category
-from adaptive_interview.models.difficulty_profile import DifficultyAssessment, DifficultyDistribution, Difficulty
+from adaptive_interview.models.difficulty_profile import Difficulty
 from adaptive_interview.engine.blueprint_builder import BlueprintBuilder
 
+
 def test_blueprint_builder():
+
     builder = BlueprintBuilder()
-    
+
     category_allocations = {
         Category.TECHNICAL: 3,
         Category.PROJECTS: 2,
         Category.MISSING_SKILLS: 0,
         Category.BEHAVIORAL: 0,
         Category.TRAJECTORY: 0,
-        Category.EXPERIENCE: 0
+        Category.EXPERIENCE: 0,
     }
-    
-    assessment = DifficultyAssessment(
-        overall_level=Difficulty.MEDIUM,
-        difficulty_profile=DifficultyDistribution(easy=0.2, medium=0.6, hard=0.2, expert=0.0),
-        category_difficulty_preferences={
-            "technical": DifficultyDistribution(easy=0.0, medium=0.3333, hard=0.6667, expert=0.0),
-            "projects": DifficultyDistribution(easy=0.5, medium=0.5, hard=0.0, expert=0.0),
-            "missing_skills": DifficultyDistribution(
-                easy=0.25,
-                medium=0.50,
-                hard=0.25,
-                expert=0.0,
-            ),
 
-            "behavioral": DifficultyDistribution(
-                easy=0.20,
-                medium=0.60,
-                hard=0.20,
-                expert=0.0,
-            ),
-
-            "trajectory": DifficultyDistribution(
-                easy=0.20,
-                medium=0.60,
-                hard=0.20,
-                expert=0.0,
-            ),
-
-            "experience": DifficultyDistribution(
-                easy=0.20,
-                medium=0.60,
-                hard=0.20,
-                expert=0.0,
-            )
+    difficulty_matrix = {
+        Category.TECHNICAL: {
+            Difficulty.EASY: 0,
+            Difficulty.MEDIUM: 1,
+            Difficulty.HARD: 2,
+            Difficulty.EXPERT: 0,
         },
-        rationale="Test candidate has moderate overall difficulty.",
+
+        Category.PROJECTS: {
+            Difficulty.EASY: 1,
+            Difficulty.MEDIUM: 1,
+            Difficulty.HARD: 0,
+            Difficulty.EXPERT: 0,
+        },
+
+        Category.MISSING_SKILLS: {
+            Difficulty.EASY: 0,
+            Difficulty.MEDIUM: 0,
+            Difficulty.HARD: 0,
+            Difficulty.EXPERT: 0,
+        },
+
+        Category.BEHAVIORAL: {
+            Difficulty.EASY: 0,
+            Difficulty.MEDIUM: 0,
+            Difficulty.HARD: 0,
+            Difficulty.EXPERT: 0,
+        },
+
+        Category.TRAJECTORY: {
+            Difficulty.EASY: 0,
+            Difficulty.MEDIUM: 0,
+            Difficulty.HARD: 0,
+            Difficulty.EXPERT: 0,
+        },
+
+        Category.EXPERIENCE: {
+            Difficulty.EASY: 0,
+            Difficulty.MEDIUM: 0,
+            Difficulty.HARD: 0,
+            Difficulty.EXPERT: 0,
+        },
+    }
+
+    blueprint = builder.build(
+        total_questions=5,
+        category_allocations=category_allocations,
+        difficulty_matrix=difficulty_matrix,
     )
-    
-    blueprint = builder.build(5, category_allocations, assessment)
-    
+
     assert blueprint.total_questions == 5
     assert len(blueprint.question_slots) == 5
-    
-    technical_slots = [s for s in blueprint.question_slots if s.category == Category.TECHNICAL]
+
+    technical_slots = [
+        s
+        for s in blueprint.question_slots
+        if s.category == Category.TECHNICAL
+    ]
+
     assert len(technical_slots) == 3
-    
-    hard_tech = [s for s in technical_slots if s.difficulty == Difficulty.HARD]
-    med_tech = [s for s in technical_slots if s.difficulty == Difficulty.MEDIUM]
-    
+
+    hard_tech = [
+        s
+        for s in technical_slots
+        if s.difficulty == Difficulty.HARD
+    ]
+
+    med_tech = [
+        s
+        for s in technical_slots
+        if s.difficulty == Difficulty.MEDIUM
+    ]
+
     assert len(hard_tech) == 2
     assert len(med_tech) == 1
-    
-    project_slots = [s for s in blueprint.question_slots if s.category == Category.PROJECTS]
+
+    project_slots = [
+        s
+        for s in blueprint.question_slots
+        if s.category == Category.PROJECTS
+    ]
+
     assert len(project_slots) == 2
-    
-    easy_proj = [s for s in project_slots if s.difficulty == Difficulty.EASY]
-    med_proj = [s for s in project_slots if s.difficulty == Difficulty.MEDIUM]
-    
+
+    easy_proj = [
+        s
+        for s in project_slots
+        if s.difficulty == Difficulty.EASY
+    ]
+
+    med_proj = [
+        s
+        for s in project_slots
+        if s.difficulty == Difficulty.MEDIUM
+    ]
+
     assert len(easy_proj) == 1
     assert len(med_proj) == 1

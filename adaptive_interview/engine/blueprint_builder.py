@@ -1,6 +1,7 @@
 from typing import Dict
 from ..models.category_priority import Category
-from ..models.difficulty_profile import DifficultyAssessment, Difficulty
+# from ..models.difficulty_profile import DifficultyAssessment
+from ..models.difficulty_profile import Difficulty
 from ..models.interview_slot import InterviewSlot
 from ..models.interview_blueprint import InterviewBlueprint
 
@@ -9,51 +10,30 @@ class BlueprintBuilder:
         self,
         total_questions: int,
         category_allocations: Dict[Category, int],
-        difficulty_assessment: DifficultyAssessment
+        difficulty_matrix: Dict[Category, Dict[Difficulty, int]]
     ) -> InterviewBlueprint:
         
-        difficulty_allocations = {d: 0 for d in Difficulty}
+        difficulty_allocations = {difficulty: 0 for difficulty in Difficulty}
         slots = []
-        q_num = 1
+        question_number = 1
         
-        for cat, count in category_allocations.items():
-            if count == 0:
-                continue
+        for category in Category:
+            category_matrix = difficulty_matrix.get(category, {difficulty: 0 for difficulty in Difficulty})
                 
-            if hasattr(difficulty_assessment.category_difficulty_preferences, cat.value):
-                dist = getattr(difficulty_assessment.category_difficulty_preferences, cat.value)
-            else:
-                dist = difficulty_assessment.difficulty_profile
-                
-            targets = {
-                Difficulty.EASY: dist.easy * count,
-                Difficulty.MEDIUM: dist.medium * count,
-                Difficulty.HARD: dist.hard * count,
-                Difficulty.EXPERT: dist.expert * count,
-            }
-            
-            cat_diffs = {d: 0 for d in Difficulty}
-            rem = count
-            
-            while rem > 0:
-                best_diff = sorted(targets.items(), key=lambda x: x[1], reverse=True)[0][0]
-                cat_diffs[best_diff] += 1
-                targets[best_diff] -= 1
-                rem -= 1
-                
-            for diff, cnt in cat_diffs.items():
-                for _ in range(cnt):
+            for difficulty in Difficulty:
+                count = category_matrix.get(difficulty, 0)
+                for _ in range(count):
                     slots.append(
                         InterviewSlot(
-                            question_number=q_num,
-                            category=cat,
-                            difficulty=diff,
+                            question_number=question_number,
+                            category=category,
+                            difficulty=difficulty,
                             allowed_context=[],
                             follow_up_allowed=False
                         )
                     )
-                    q_num += 1
-                    difficulty_allocations[diff] += 1
+                    question_number += 1
+                    difficulty_allocations[difficulty] += 1
                     
         return InterviewBlueprint(
             total_questions=total_questions,
