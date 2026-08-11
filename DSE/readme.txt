@@ -1,0 +1,51 @@
+DSE is a Diagnostic Scoring Engine,
+the reason i decided to build this out is because our smart resume just rewrites any given resume,
+it lacks the ability to actually judge if a resume and analyze all aspects of it,
+for this reason i decided to build this DSE that helps analyze a resume and figure if its worth rewriting 
+
+
+for this to work well we have defined 5 parameters that the system looks at in a resume 
+
+The 5 Independent Evaluation Parameters
+1. Structural Health & Parsability (The "ATS Format" Score)-> this checks how ats friendly the resume template is basically,
+the idea on how to score it 
+How it calculates (Python): We use the spatial coordinates (x0, y0) from your TextExtraction layer. 
+If the variance in x0 coordinates is too high (indicating a 2-column Canva template), 
+the score drops. If standard headers ("Experience", "Education") aren't found via Regex, it drops further.
+
+2. Metric Density (The "Impact" Score) -> this is in regards to the STAR format, 
+here we try and look for the candidate proving their impact with numbers, not just listing duties...
+
+
+3. Linguistic Vigor -> Does the candidate sound confident? Are they using active or passive voice?
+
+4. Semantic Depth -> Did the candidate just list "Python" in their skills section, or did they actually explain how they used Python in their projects?
+
+
+5.Brevity & Conciseness -> Are the bullets too short (lacking detail) or too long (a wall of text)?
+Redundancy: Are they using 15 words to say what could be said in 3? (e.g., "was responsible for the development and implementation of" vs "engineered").
+Structural Pacing: Is it a single, breathless run-on sentence, or does it follow a clean, logical flow (Action -> Context -> Result)?
+
+
+now some of these parameters need to be evaluated deterministically and some require and llm call,
+and the final ouptut must also be an llm generated report the end use can read,
+
+to make type of system efficient we use  The Optimized "Single-Pass" Architecture
+
+1. Phase 1: The Deterministic Pre-Compute (Pure Python)
+As soon as the user uploads their PDF, our Python engine immediately scans the spatial coordinates. 
+It checks the variance of the x0 and y0 data
+Output: It generates a raw score and a plain-text reason. (e.g., Score: 90/100. 
+Reason: Clean, single-column layout detected with standard left-aligned indentations.)
+
+
+2. Phase 2: The Unified LLM Prompt
+Instead of just sending the parsed text, we inject the result of Phase 1 directly into the LLM prompt as context.  
+We pass the LLM the parsed resume JSON.We explicitly tell the LLM: "The system has already evaluated the Structural Health of this resume. 
+The score is 90/100 because it has a clean single-column layout. Do not recalculate this. Simply incorporate this into your final report."
+
+
+
+3. Phase 3: The Unified LLM Output (The Master Scorecard)
+Because the LLM now has both the structural context (from our math) and the semantic context (from reading the text), 
+it can evaluate the remaining 4 pillars and synthesize a holistic report in one shot.
