@@ -9,11 +9,19 @@ paddleocr
 numpy
 google-genai
 python-dotenv
-
-
-
-# added for adaptive_interview
+pandas
+sentence-transformers
+scikit-learn
 google-generativeai
+Jinja2
+weasyprint
+#for mac 
+#pango
+<<<<<<< HEAD
+
+=======
+>>>>>>> 3adf13550c4e89a92d6ae59cf03c68af2c88621f
+# added for adaptive_interview
 pydantic
 python-dotenv
 

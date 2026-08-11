@@ -1,0 +1,356 @@
+                   AYAAN'S SYSTEM
+                         │
+                         ▼
+                 resume_parsed.json
+                         │
+                         │
+             ┌───────────┴───────────┐
+             ▼                       ▼
+      Semantic Matcher          LLMAdvisor
+             │                       │
+             │                       │
+      Role + matched/missing    Skill/impact/
+           skills              trajectory advice
+             │                       │
+             └───────────┬───────────┘
+                         ▼
+                  MY MODULE
+                         │
+          ┌──────────────┴──────────────┐
+          ▼                             ▼
+ Knowledge Discovery              Priority Analyzer
+     Gemini                            Gemini
+          │                             │
+          ▼                             ▼
+ Knowledge Summary              Category Priorities
+          │                             │
+          └──────────────┬──────────────┘
+                         ▼
+                 Python Allocation
+                         │
+                         ▼
+                  Category Counts
+                         │
+                         ▼
+                 Difficulty Gemini
+                         │
+                         ▼
+                 Difficulty Profile
+                         │
+                         ▼
+                 Python Allocation
+                         │
+                         ▼
+                Interview Blueprint
+                         │
+                         ▼
+                Gemini Generator
+                         │
+                         ▼
+                    QuestionBank
+
+Inputs that I require:
+
+Input A — Resume
+
+From:
+
+resume_parsed.json
+
+Input B — Role
+
+Semantic matcher / role-related output contains the target role.
+
+Input C — Matched and missing skills
+
+Using whatever the ATS/semantic matcher provides.
+
+Input D — LLMAdvisor
+
+
+Layer 1 — Knowledge Discovery using gemini
+
+    The purpose is:
+
+        Given this candidate and this role, what technical knowledge is actually relevant to evaluating this candidate?
+
+        It should also understand relationships between technologies.
+    Gemini returns one JSON object.
+
+Layer 2 — Priority Analyzer
+
+    This answers:
+
+        "What areas of this candidate actually need to be tested?"
+    
+    What determines priority?
+
+    Gemini should consider:
+
+        Technical
+
+            How important are the core technical fundamentals for this role?
+
+        Projects
+
+            Does the candidate rely heavily on projects as evidence of competence?
+
+        Missing Skills
+
+            Are important role requirements absent from the candidate's demonstrated experience?
+
+        Behavioral
+
+            Does the role require significant collaboration, leadership, communication, ownership, etc.?
+
+        Trajectory
+
+            Is there a major transition between candidate background and target role?
+
+        Experience
+
+            Is professional experience sufficient to evaluate?
+    
+    Then Python converts the relative priorities into an actual distribution.
+
+Layer 3 — Python category allocation
+    Suppose Gemini returns:
+
+            technical       0.81
+            projects        0.73
+            missing_skills  0.95
+            behavioral      0.28
+            trajectory      0.67
+            experience      0.42
+
+    Python calculates:
+
+    Total = 3.86
+
+    Then:
+
+        technical       = 0.81 / 3.86
+        projects        = 0.73 / 3.86
+        missing_skills  = 0.95 / 3.86
+        ...
+
+    Then multiply by requested question count.
+
+    If:
+
+    total_questions = 20
+
+    you get fractional allocations.
+
+    Python then uses a largest-remainder allocation algorithm to convert them into whole numbers while ensuring:
+
+    sum(question_counts) == 20
+
+Constraints
+    example:
+
+        "allocation_constraints": {
+            "minimum_questions_when_relevant": 1,
+            "maximum_category_fraction": 0.60
+        }
+
+Layer 4 — Difficulty Assessment
+    Now Gemini evaluates the candidate's appropriate challenge level.
+
+    This is different from category priority.
+
+    Priority asks:
+
+        What should we test?
+
+    Difficulty asks:
+
+        How challenging should the interview be for this person?
+    and returns output as a JSON file
+
+Now the tricky part: category × difficulty
+
+I have two independently generated pieces of information:
+
+    Category priorities
+
+    Difficulty distribution
+
+This is where I would use Gemini-generated category difficulty guidance.
+
+Instead, the blueprint generation stage should combine:
+
+    category priority
+    +
+    candidate difficulty profile
+    +
+    knowledge context
+
+    to create slots.
+ 
+But how does Python know which difficulty goes with which category?
+
+    Gemini should provide category difficulty guidance.
+    example: 
+        "category_difficulty_guidance": {
+        "technical": {
+        "preferred": ["medium", "hard"]
+        },
+
+        "projects": {
+        "preferred": ["medium", "hard"]
+        }
+    }
+
+
+Now the Python planner has enough information to make the assignment without hardcoded difficulty matrices.
+
+
+Python's job becomes an allocation problem
+
+Python has:
+
+    Category counts
+    +
+    Overall difficulty counts
+    +
+    Category-specific difficulty preferences
+
+It creates a matrix.
+
+    Conceptually:
+
+                            Easy   Medium   Hard   Expert
+        Technical             ?       ?       ?       ?
+        Projects              ?       ?       ?       ?
+        Missing Skills        ?       ?       ?       ?
+        Behavioral            ?       ?       ?       ?
+        Trajectory             ?       ?       ?       ?
+        Experience             ?       ?       ?       ?
+
+    The algorithm fills this matrix while respecting:
+
+    Row totals
+
+    Category question counts.
+
+    Column totals
+
+    Difficulty question counts.
+
+    Preference
+
+    Gemini's category-specific difficulty distribution.
+
+Now: what about allowed_context?
+
+I am planning to use the Knowledge Discovery output + upstream resume data.
+
+For a missing_skills question:
+
+{
+  "category": "missing_skills",
+
+  "allowed_context": [
+    "Docker",
+    "FastAPI",
+    "REST APIs"
+  ]
+}
+
+Those came from:
+
+ATS missing skills
++
+Knowledge Discovery
+
+So Python doesn't invent the allowed context.
+
+It assembles it from already-existing data.
+
+Then Gemini decides:
+
+Which of these is most appropriate?
+
+and generates the question.
+
+The final Interview Blueprint
+
+I would make the blueprint look approximately like:
+
+{
+  "total_questions": 20,
+
+  "category_allocation": {
+    "technical": 4,
+    "projects": 5,
+    "missing_skills": 5,
+    "trajectory": 4,
+    "behavioral": 2
+  },
+
+  "difficulty_profile": {
+    "easy": 3,
+    "medium": 11,
+    "hard": 5,
+    "expert": 1
+  },
+
+  "question_slots": [
+    {
+      "id": 1,
+      "category": "technical",
+      "difficulty": "medium",
+      "allowed_context": [
+        "Python",
+        "REST APIs",
+        "backend architecture"
+      ]
+    },
+
+    {
+      "id": 2,
+      "category": "projects",
+      "difficulty": "medium",
+      "allowed_context": [
+        "PulmoX",
+        "TensorFlow",
+        "CNN"
+      ]
+    },
+
+    {
+      "id": 3,
+      "category": "missing_skills",
+      "difficulty": "medium",
+      "allowed_context": [
+        "Docker",
+        "FastAPI"
+      ]
+    }
+  ]
+} 
+
+The final question-generation Gemini call gets:
+
+Candidate
+Resume
+Role
+Role + Job Description
+Advisor
+Skill advice
+Impact advice
+Trajectory advice
+Reality check
+Knowledge
+Knowledge Discovery summary
+Blueprint
+20 question slots
+category
+difficulty
+allowed context
+ordering
+
+Then Gemini generates the actual question bank. 
+
+

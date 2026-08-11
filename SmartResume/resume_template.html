@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ resume.name }} - Resume</title>
+  <meta name="author" content="{{ resume.name }}">
+  <meta name="description" content="Resume of {{ resume.name }}">
+
+  <style>
+    /* 1. Page Configuration for WeasyPrint */
+    @page {
+      size: A4;
+      margin: 0.5in 0.6in;
+    }
+
+    /* 2. Global Reset & Base Typography */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 10pt;
+      line-height: 1.35;
+      color: #111111;
+      background-color: #ffffff;
+    }
+
+    /* 3. Header Styling */
+    header {
+      text-align: center;
+      margin-bottom: 12px;
+      border-bottom: 1.5px solid #111111;
+      padding-bottom: 8px;
+    }
+
+    h1 {
+      font-size: 20pt;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .summary-title {
+      font-size: 10.5pt;
+      font-weight: 600;
+      color: #333333;
+      margin-bottom: 6px;
+    }
+
+    .contact-info {
+      font-size: 9pt;
+      color: #444444;
+    }
+
+    .contact-info span:not(:last-child)::after {
+      content: " • ";
+      margin: 0 4px;
+      color: #888888;
+    }
+
+    /* 4. Section Structure */
+    section {
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-size: 11pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      border-bottom: 1px solid #333333;
+      padding-bottom: 2px;
+      margin-bottom: 6px;
+      color: #111111;
+    }
+
+    /* 5. Block Items (Prevent Awkward Page Breaks) */
+    .block-item {
+      margin-bottom: 8px;
+      page-break-inside: avoid; /* Prevents splitting a single project/job across pages */
+    }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 700;
+      font-size: 10pt;
+    }
+
+    .item-subheader {
+      display: flex;
+      justify-content: space-between;
+      font-style: italic;
+      font-size: 9.5pt;
+      color: #333333;
+      margin-bottom: 3px;
+    }
+
+    .item-dates {
+      font-weight: 400;
+      font-style: normal;
+      font-size: 9pt;
+      color: #444444;
+    }
+
+    /* 6. Bullet Lists */
+    ul {
+      list-style-type: disc;
+      margin-left: 16px;
+      margin-top: 3px;
+    }
+
+    li {
+      font-size: 9.5pt;
+      margin-bottom: 3px;
+      text-align: justify;
+    }
+
+    /* 7. Inline Skills Formatting */
+    .skills-list {
+      font-size: 9.5pt;
+      line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <h1>{{ resume.name }}</h1>
+    {% if resume.summary %}
+      <div class="summary-title">{{ resume.summary }}</div>
+    {% endif %}
+    
+    <div class="contact-info">
+      {% for email in resume.contact_info.emails %}
+        <span>{{ email }}</span>
+      {% endfor %}
+      {% for phone in resume.contact_info.phones %}
+        <span>{{ phone }}</span>
+      {% endfor %}
+      {% for link in resume.contact_info.links %}
+        <span>{{ link }}</span>
+      {% endfor %}
+    </div>
+  </header>
+
+  <!-- SKILLS -->
+  {% if resume.skills %}
+  <section>
+    <h2>Core Technical Skills</h2>
+    <div class="skills-list">
+      {{ resume.skills | join(', ') }}
+    </div>
+  </section>
+  {% endif %}
+
+  <!-- EXPERIENCE -->
+  {% if resume.experience %}
+  <section>
+    <h2>Professional Experience</h2>
+    {% for exp in resume.experience %}
+      <div class="block-item">
+        <div class="item-header">
+          <span>{{ exp.title }}</span>
+          <span class="item-dates">{{ exp.dates if exp.dates else '' }}</span>
+        </div>
+        <div class="item-subheader">
+          <span>{{ exp.company }}</span>
+        </div>
+        {% if exp.bullets %}
+          <ul>
+            {% for bullet in exp.bullets %}
+              <li>{{ bullet }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </section>
+  {% endif %}
+
+  <!-- PROJECTS -->
+  {% if resume.projects %}
+  <section>
+    <h2>Key Engineering Projects</h2>
+    {% for proj in resume.projects %}
+      <div class="block-item">
+        <div class="item-header">
+          <span>{{ proj.name }}</span>
+          <span class="item-dates">{{ proj.dates if proj.dates else '' }}</span>
+        </div>
+        {% if proj.bullets %}
+          <ul>
+            {% for bullet in proj.bullets %}
+              <li>{{ bullet }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </section>
+  {% endif %}
+
+  <!-- EDUCATION -->
+  {% if resume.education %}
+  <section>
+    <h2>Education</h2>
+    {% for edu in resume.education %}
+      <div class="block-item">
+        <div class="item-header">
+          <span>{{ edu.institution }}</span>
+          <span class="item-dates">{{ edu.dates if edu.dates else '' }}</span>
+        </div>
+        <div class="item-subheader">
+          <span>{{ edu.degree }}</span>
+        </div>
+      </div>
+    {% endfor %}
+  </section>
+  {% endif %}
+
+  <!-- CERTIFICATIONS -->
+  {% if resume.certifications %}
+  <section>
+    <h2>Certifications</h2>
+    {% for cert in resume.certifications %}
+      <div class="block-item">
+        <div class="item-header">
+          <span>{{ cert.name }}</span>
+          <span class="item-dates">{{ cert.date if cert.date else '' }}</span>
+        </div>
+        {% if cert.issuer %}
+          <div class="item-subheader">
+            <span>{{ cert.issuer }}</span>
+          </div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </section>
+  {% endif %}
+
+  <!-- AWARDS & HONORS -->
+  {% if resume.awards_and_honors %}
+  <section>
+    <h2>Awards & Honors</h2>
+    <ul>
+      {% for award in resume.awards_and_honors %}
+        <li>{{ award }}</li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
+</body>
+</html>
