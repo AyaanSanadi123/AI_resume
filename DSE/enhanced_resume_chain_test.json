@@ -1,0 +1,91 @@
+{
+  "name": "Ayaan Sanadi",
+  "summary": "Innovative Computer Vision and Machine Learning Engineer specializing in Edge AI, TinyML, and real-time deep learning pipelines. Proven track record of architecting high-performance, low-latency models and full-stack AI systems deployed across resource-constrained hardware and cloud environments.",
+  "skills": [
+    "Python",
+    "JavaScript",
+    "C",
+    "C++",
+    "YOLO",
+    "MediaPipe",
+    "TensorFlow Lite (Micro)",
+    "PyTorch",
+    "FastAPI",
+    "OpenCV",
+    "Next.js",
+    "Git",
+    "PostgreSQL",
+    "MongoDB"
+  ],
+  "experience": [
+    {
+      "company": "Neuronetic Vision",
+      "title": "Computer Vision Intern",
+      "dates": "Jan 2026 \u2013 Apr 2026",
+      "bullets": [
+        "Engineered end-to-end object detection pipelines using Git for version control, scraping and annotating complex datasets to train YOLO models, boosting data quality by **[Insert % Data Quality Improvement]**.",
+        "Fine-tuned and deployed PyTorch-based YOLO models for real-time CCTV security, achieving **[Insert % Accuracy Improvement]** accuracy in detecting weapons and public violations.",
+        "Architected automated warehouse vision solutions for pest and license plate detection, reducing manual monitoring latency by **[Insert Latency Reduction %]** under varied lighting."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "FormCheck AI: Real-Time Biomechanics Analysis",
+      "dates": null,
+      "bullets": [
+        "Architected an AI gym safety platform using MediaPipe and OpenCV for real-time pose estimation, achieving **[Insert Frame Rate in FPS]** FPS processing speeds on standard hardware.",
+        "Engineered a custom validation pipeline to deliver instant corrective audio cues, reducing form-tracking latency by **[Insert Latency Reduction in ms]** ms and storing telemetry in MongoDB."
+      ]
+    },
+    {
+      "name": "BirdSpec: End-to-End Species Detection Pipeline",
+      "dates": null,
+      "bullets": [
+        "Trained a lightweight EfficientNet-V2 CNN in PyTorch on 60,000+ images to classify 483 bird species, achieving **[Insert % Accuracy]** accuracy despite high inter-class similarity.",
+        "Deployed the inference engine via FastAPI, integrating a Next.js frontend and MongoDB backend to reduce history-tracking query latency by **[Insert MongoDB Query Speedup %]**."
+      ]
+    },
+    {
+      "name": "Real-Time AI Smart Attendance & Analytics Pipeline",
+      "dates": null,
+      "bullets": [
+        "Automated attendance for 70+ students by engineering a YOLOv8-face and InceptionResnetV1 pipeline, achieving **[Insert % Accuracy Improvement]** accuracy in facial feature extraction.",
+        "Architected a 'Two-Brain' tracking system pairing DeepOCSORT with long-term logical memory, maintaining **[Insert Target FPS]** FPS and eliminating ID-switching errors.",
+        "Accelerated processing by offloading tensor operations to Apple Silicon (MPS), reducing frame matching latency by **[Insert Latency Reduction %]** via vectorized cosine similarity.",
+        "Integrated a PostgreSQL backend to translate AI outputs into official registry data, reducing administrative reporting overhead by **[Insert % Time Saved]** through automated CSVs."
+      ]
+    },
+    {
+      "name": "AI-Powered Acoustic Pest Detection System (Edge AI / TinyML)",
+      "dates": null,
+      "bullets": [
+        "Deployed an INT8 post-training quantized CNN with a sub-65KB footprint onto an ESP32 using TFLite Micro, achieving **[Insert % Accuracy]** accuracy in real-time pest detection.",
+        "Built a custom C/C++ DSP pipeline to replicate Python's Librosa at the edge, converting raw 16kHz audio to Mel-Spectrograms and reducing processing latency by **[Insert Latency Reduction %]**.",
+        "Prevented ESP32 RAM overflow and tensor corruption by forcing 16-byte memory alignment in C and shifting audio arrays to the Heap, ensuring **[Insert % Uptime]** system stability.",
+        "Designed a 5-step rolling buffer with '3-out-of-5' voting logic, reducing false-positive alerts by **[Insert % Reduction]** and pushing instant HTTP POST alerts to Next.js."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "BMS Institute of Technology and Management",
+      "degree": "B.E. in Artificial Intelligence & Machine Learning | CGPA: 8.6",
+      "dates": "2024 \u2013 2028"
+    }
+  ],
+  "certifications": [],
+  "awards_and_honors": [],
+  "contact_info": {
+    "emails": [
+      "ayaansanadi8@gmail.com"
+    ],
+    "phones": [
+      "+91 9353670602"
+    ],
+    "links": [
+      "linkedin.com/in/ayaan-sanadi",
+      "github.com/AyaanSanadi123"
+    ]
+  }
+}

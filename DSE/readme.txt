@@ -49,3 +49,57 @@ The score is 90/100 because it has a clean single-column layout. Do not recalcul
 3. Phase 3: The Unified LLM Output (The Master Scorecard)
 Because the LLM now has both the structural context (from our math) and the semantic context (from reading the text), 
 it can evaluate the remaining 4 pillars and synthesize a holistic report in one shot.
+
+
+
+we need to talk about this one Deterministic function,
+calculate_structural_health, this is used to find how well formatted the resume is,
+does it have multiple columns and tables or is it ATS friendly? 
+
+first we decided to use Standard Deviation of all the x0 coordinates,
+but that failed,
+The Idea: We assumed that in a single-column resume, 
+all the text is neatly stacked on the left side of the page (around $x_0 = 40$ to $60$). 
+Therefore, if we calculated the Standard Deviation (which measures how far apart a set of numbers are from their average), 
+a single-column resume would have a very low score. A two-column resume would have half its text at $x_0 = 50$ and the other half at $x_0 = 350$, resulting in a massive spread and a high standard deviation score.
+
+
+
+Why it Failed: Standard deviation is highly sensitive to outliers.
+When we ran your resume through this math, 
+it looked at these coordinates:  Most of your text starts at x0: 42.75.  
+Your bullet points start at x0: 57.75.  
+The Outlier: Your graduation date ("2024 – 2028") is right-aligned on the page at x0: 495.10.  
+Because standard deviation squares the distance of every point from the average, that single right-aligned date pulled the entire mathematical average completely out of whack. 
+The algorithm saw that number and essentially panicked, thinking: "There is text all the way at 495! This must be a massive second column!"
+
+The Lesson: Standard deviation is "dumb" to the context of resume design. 
+It aggressively punishes standard, harmless formatting like right-aligned dates or centered headers.
+
+
+
+okay to fix this, we need to stop measuring how spread out the data is and 
+rather how concentrated it is, against a baseline 
+
+todo this we need to first filter the data -> 
+If a piece of text is very short (under 25 characters) 
+AND sits way on the right side of the page ($x_0 > 350$), it is just a date or location. Ignore it entirely.
+
+
+
+2. Anchor the Primary Margin
+Once the noise is filtered out,
+we look at all the remaining text blocks and find the absolute minimum value (in your case, 42.75). 
+We lock this in as the Primary Left Margin.  
+
+
+3. The Indentation Buffer
+We know that bullet points are indented slightly to the right of the headers. 
+If the margin is 42, a bullet point might be at 58. We create a "safe zone" of 45 points to the right of the Primary Margin.  
+
+
+4. The Density RatioFinally,
+ we count how many text blocks start inside that safe zone, 
+and divide it by the total number of text blocks to get a percentage.
+In a true two-column resume: 50% of the paragraphs will start inside the safe zone, and 50% will start in the second column outside the safe zone. 
+The ratio will be 0.50. We flag it as "Bad."In your resume: Once we ignored the date, 100% of your paragraphs and bullet points started within the safe zone. The ratio is 1.0 (100%). We flag it as "Good."  
