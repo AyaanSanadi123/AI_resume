@@ -1,4 +1,4 @@
 {
   "target_role": "Backend Engineer",
-  "job_description": "Looking for a backend engineer with Python, API design, and database experience."
+  "job_description": "We are looking for a Backend Engineer who can build reliable backend services and APIs. Required capabilities include Python, REST API design, FastAPI or equivalent backend frameworks, relational database fundamentals, SQL, containerization with Docker, cloud deployment fundamentals, and scalable service design. The engineer should be able to debug production issues, reason about API and database trade-offs, and work effectively with frontend and other engineering teams."
 }

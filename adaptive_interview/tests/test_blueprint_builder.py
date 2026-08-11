@@ -19,9 +19,36 @@ def test_blueprint_builder():
         difficulty_profile=DifficultyDistribution(easy=0.2, medium=0.6, hard=0.2, expert=0.0),
         category_difficulty_preferences={
             "technical": DifficultyDistribution(easy=0.0, medium=0.3333, hard=0.6667, expert=0.0),
-            "projects": DifficultyDistribution(easy=0.5, medium=0.5, hard=0.0, expert=0.0)
+            "projects": DifficultyDistribution(easy=0.5, medium=0.5, hard=0.0, expert=0.0),
+            "missing_skills": DifficultyDistribution(
+                easy=0.25,
+                medium=0.50,
+                hard=0.25,
+                expert=0.0,
+            ),
+
+            "behavioral": DifficultyDistribution(
+                easy=0.20,
+                medium=0.60,
+                hard=0.20,
+                expert=0.0,
+            ),
+
+            "trajectory": DifficultyDistribution(
+                easy=0.20,
+                medium=0.60,
+                hard=0.20,
+                expert=0.0,
+            ),
+
+            "experience": DifficultyDistribution(
+                easy=0.20,
+                medium=0.60,
+                hard=0.20,
+                expert=0.0,
+            )
         },
-        rationale=""
+        rationale="Test candidate has moderate overall difficulty.",
     )
     
     blueprint = builder.build(5, category_allocations, assessment)

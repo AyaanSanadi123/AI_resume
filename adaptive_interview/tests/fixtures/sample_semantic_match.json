@@ -1,4 +1,16 @@
 {
-  "matched_skills": ["Python", "FastAPI", "PostgreSQL"],
-  "missing_skills": ["Docker", "Kubernetes", "AWS"]
+  "matched_skills": [
+    "Python",
+    "FastAPI",
+    "PostgreSQL",
+    "MongoDB",
+    "Git"
+  ],
+  "missing_skills": [
+    "Docker",
+    "Kubernetes",
+    "AWS",
+    "SQL",
+    "Scalable Service Design"
+  ]
 }

@@ -1,6 +1,6 @@
 {
-  "reality_check": "Candidate is applying for backend role with good Python skills, but missing core DevOps elements.",
-  "skill_advice": "Focus on deploying FastAPI services and containerizing them.",
-  "impact_advice": "Highlight backend projects.",
-  "trajectory_advice": "Moving towards a more senior backend role requires system design knowledge."
+  "reality_check": "The candidate has strong Python and API-adjacent evidence through FastAPI projects, but the resume does not demonstrate core containerization, cloud deployment, or scalable backend-service experience expected for the target role.",
+  "skill_advice": "Extend the BirdSpec FastAPI service with Docker-based packaging and document a production-style deployment architecture; demonstrate SQL and PostgreSQL operations rather than relying only on listing PostgreSQL as a skill.",
+  "impact_advice": "Quantify the FastAPI and backend portions of BirdSpec and the attendance pipeline using measurable values such as request throughput, latency, concurrent users, database query improvement, deployment time, or uptime.",
+  "trajectory_advice": "The candidate is transitioning from a Computer Vision/ML profile toward backend engineering. Reframe the summary around Python services, FastAPI, database integration, API development, and production-oriented deployment while using the ML projects as evidence of backend integration rather than presenting the profile primarily as computer vision."
 }
