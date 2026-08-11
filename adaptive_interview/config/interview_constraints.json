@@ -1,0 +1,6 @@
+{
+  "allocation_constraints": {
+    "minimum_questions_when_relevant": 1,
+    "maximum_category_fraction": 0.60
+  }
+}

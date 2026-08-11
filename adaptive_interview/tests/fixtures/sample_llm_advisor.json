@@ -1,0 +1,6 @@
+{
+  "reality_check": "Candidate is applying for backend role with good Python skills, but missing core DevOps elements.",
+  "skill_advice": "Focus on deploying FastAPI services and containerizing them.",
+  "impact_advice": "Highlight backend projects.",
+  "trajectory_advice": "Moving towards a more senior backend role requires system design knowledge."
+}

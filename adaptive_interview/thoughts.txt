@@ -354,3 +354,65 @@ ordering
 Then Gemini generates the actual question bank. 
 
 
+FILE STRUCTURE:
+
+adaptive_interview/
+│
+├── __init__.py
+│
+├── models/
+│   ├── __init__.py
+│   ├── upstream_candidate.py
+│   ├── knowledge_summary.py
+│   ├── category_priority.py
+│   ├── difficulty_profile.py
+│   ├── interview_slot.py
+│   ├── interview_blueprint.py
+│   └── question_bank.py
+│
+├── engine/
+│   ├── __init__.py
+│   ├── knowledge_discovery.py
+│   ├── priority_analyzer.py
+│   ├── difficulty_assessor.py
+│   ├── allocation_engine.py
+│   ├── blueprint_builder.py
+│   └── question_generator.py
+│
+├── prompts/
+│   ├── knowledge_discovery.txt
+│   ├── priority_analyzer.txt
+│   ├── difficulty_assessor.txt
+│   └── question_generator.txt
+│
+├── services/
+│   ├── __init__.py
+│   └── gemini_client.py
+│
+├── config/
+│   ├── __init__.py
+│   └── interview_constraints.json
+│
+├── pipeline/
+│   ├── __init__.py
+│   └── interview_pipeline.py
+│
+├── tests/
+│   ├── __init__.py
+│   ├── fixtures/
+│   │   ├── sample_resume.json
+│   │   ├── sample_role.json
+│   │   ├── sample_semantic_match.json
+│   │   └── sample_llm_advisor.json
+│   │
+│   ├── test_knowledge_discovery.py
+│   ├── test_priority_analyzer.py
+│   ├── test_difficulty_assessor.py
+│   ├── test_allocation_engine.py
+│   ├── test_blueprint_builder.py
+│   ├── test_question_generator.py
+│   └── test_full_pipeline.py
+│
+└── api/
+    ├── __init__.py
+    └── interview.py

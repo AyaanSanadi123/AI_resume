@@ -1,0 +1,184 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "category": "technical",
+      "difficulty": "easy",
+      "topic": "Python Fundamentals",
+      "intent": "Assess basic Python knowledge relevant to backend development.",
+      "question": "What are some key differences between lists and tuples in Python, and when would you choose one over the other?",
+      "follow_up": null
+    },
+    {
+      "id": 2,
+      "category": "technical",
+      "difficulty": "easy",
+      "topic": "FastAPI Basics",
+      "intent": "Evaluate understanding of core FastAPI concepts.",
+      "question": "How do you define a basic GET endpoint in FastAPI, and what is the purpose of a path operation function?",
+      "follow_up": null
+    },
+    {
+      "id": 3,
+      "category": "technical",
+      "difficulty": "medium",
+      "topic": "PostgreSQL/Database Management",
+      "intent": "Assess understanding of relational database concepts and SQL.",
+      "question": "Explain the concept of database normalization. Why is it important, and what are some common normal forms?",
+      "follow_up": null
+    },
+    {
+      "id": 4,
+      "category": "technical",
+      "difficulty": "medium",
+      "topic": "API Design Principles",
+      "intent": "Evaluate understanding of RESTful API design principles.",
+      "question": "When designing a RESTful API, what are the key principles you consider for resource naming, HTTP methods, and status codes?",
+      "follow_up": null
+    },
+    {
+      "id": 5,
+      "category": "projects",
+      "difficulty": "easy",
+      "topic": "FormCheck AI Project (Backend/API)",
+      "intent": "Understand the candidate's role and technical contribution to their project, specifically backend aspects.",
+      "question": "In your 'FormCheck AI: Real-Time Biomechanics Analysis' project, can you describe any backend components you developed or interacted with, particularly regarding data storage or API endpoints?",
+      "follow_up": null
+    },
+    {
+      "id": 6,
+      "category": "projects",
+      "difficulty": "easy",
+      "topic": "FormCheck AI Project (Database)",
+      "intent": "Explore the database choices and usage in their project.",
+      "question": "For your 'FormCheck AI' project, what kind of data did you need to store, and how did you manage that data? Did you use a specific database technology?",
+      "follow_up": null
+    },
+    {
+      "id": 7,
+      "category": "projects",
+      "difficulty": "medium",
+      "topic": "FormCheck AI Project (Scalability/Design)",
+      "intent": "Assess the candidate's ability to think about the design and potential scalability of their project's backend.",
+      "question": "Considering your 'FormCheck AI' project, if you needed to scale the backend to handle a much larger number of concurrent users or data, what architectural changes or considerations would you make?",
+      "follow_up": null
+    },
+    {
+      "id": 8,
+      "category": "missing_skills",
+      "difficulty": "easy",
+      "topic": "Docker (Containerization)",
+      "intent": "Evaluate basic knowledge of containerization and Docker.",
+      "question": "What is Docker, and what problem does it aim to solve in software development and deployment?",
+      "follow_up": null
+    },
+    {
+      "id": 9,
+      "category": "missing_skills",
+      "difficulty": "easy",
+      "topic": "Kubernetes (Container Orchestration)",
+      "intent": "Assess fundamental understanding of Kubernetes' purpose.",
+      "question": "Can you explain the primary purpose of Kubernetes in a modern application deployment environment?",
+      "follow_up": null
+    },
+    {
+      "id": 10,
+      "category": "missing_skills",
+      "difficulty": "easy",
+      "topic": "AWS (Cloud Computing)",
+      "intent": "Gauge familiarity with basic cloud computing concepts, specifically AWS.",
+      "question": "What are some fundamental services offered by AWS that are commonly used for deploying backend applications?",
+      "follow_up": null
+    },
+    {
+      "id": 11,
+      "category": "missing_skills",
+      "difficulty": "medium",
+      "topic": "Docker/FastAPI Deployment",
+      "intent": "Assess understanding of how to containerize and deploy a FastAPI application using Docker.",
+      "question": "If you had a FastAPI application, how would you go about creating a Dockerfile to containerize it for deployment? What key instructions would you include?",
+      "follow_up": null
+    },
+    {
+      "id": 12,
+      "category": "behavioral",
+      "difficulty": "easy",
+      "topic": "Teamwork/Collaboration",
+      "intent": "Understand how the candidate collaborates within a team.",
+      "question": "Describe a time you had to work closely with others on a project. What was your role, and how did you contribute to the team's success?",
+      "follow_up": null
+    },
+    {
+      "id": 13,
+      "category": "behavioral",
+      "difficulty": "medium",
+      "topic": "Problem Solving/Debugging",
+      "intent": "Assess the candidate's approach to identifying and resolving technical challenges.",
+      "question": "Tell me about a challenging technical problem you encountered during your internship or a project. How did you approach solving it, and what was the outcome?",
+      "follow_up": null
+    },
+    {
+      "id": 14,
+      "category": "behavioral",
+      "difficulty": "medium",
+      "topic": "Learning/Adaptability",
+      "intent": "Evaluate the candidate's ability to learn new technologies or adapt to new requirements.",
+      "question": "Describe a situation where you had to quickly learn a new technology or skill to complete a task or project. How did you approach learning it, and what was the result?",
+      "follow_up": null
+    },
+    {
+      "id": 15,
+      "category": "trajectory",
+      "difficulty": "easy",
+      "topic": "Career Goals",
+      "intent": "Understand the candidate's short-term career aspirations.",
+      "question": "What are your primary career goals for the next 1-2 years?",
+      "follow_up": null
+    },
+    {
+      "id": 16,
+      "category": "trajectory",
+      "difficulty": "easy",
+      "topic": "Role Interest",
+      "intent": "Determine what aspects of a backend engineering role appeal to the candidate.",
+      "question": "What specifically interests you about a Backend Engineer role, and what do you hope to achieve in such a position?",
+      "follow_up": null
+    },
+    {
+      "id": 17,
+      "category": "trajectory",
+      "difficulty": "medium",
+      "topic": "Skill Development/System Design",
+      "intent": "Explore how the candidate plans to develop skills for a more senior backend role, specifically system design.",
+      "question": "The LLM Advisor mentioned that moving towards a more senior backend role requires system design knowledge. How do you plan to develop your skills in system design and architecture?",
+      "follow_up": null
+    },
+    {
+      "id": 18,
+      "category": "experience",
+      "difficulty": "easy",
+      "topic": "Internship Responsibilities",
+      "intent": "Understand the candidate's day-to-day responsibilities during their internship.",
+      "question": "As a Computer Vision Intern at Neuronetic Vision, what were your primary responsibilities and daily tasks?",
+      "follow_up": null
+    },
+    {
+      "id": 19,
+      "category": "experience",
+      "difficulty": "easy",
+      "topic": "Internship Technologies",
+      "intent": "Identify the technologies used and learned during the internship.",
+      "question": "What specific technologies or tools did you primarily use during your internship at Neuronetic Vision?",
+      "follow_up": null
+    },
+    {
+      "id": 20,
+      "category": "experience",
+      "difficulty": "medium",
+      "topic": "Internship Impact/Challenges",
+      "intent": "Assess the candidate's ability to reflect on their contributions and challenges during their internship.",
+      "question": "Can you describe a significant challenge you faced during your Computer Vision Internship and how you overcame it? What was the impact of your work?",
+      "follow_up": null
+    }
+  ]
+}

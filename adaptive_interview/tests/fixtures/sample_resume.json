@@ -1,0 +1,53 @@
+{
+  "name": "Ayaan Sanadi",
+  "summary": "Computer Vision & ML Engineer | Bengaluru, India",
+  "skills": [
+    "Python",
+    "JavaScript",
+    "C",
+    "C++",
+    "YOLO",
+    "MediaPipe",
+    "TensorFlow Lite (Micro)",
+    "PyTorch",
+    "FastAPI",
+    "OpenCV",
+    "Next.js",
+    "Git",
+    "PostgreSQL",
+    "MongoDB"
+  ],
+  "experience": [
+    {
+      "company": "Neuronetic Vision",
+      "title": "Computer Vision Intern",
+      "dates": "Jan 2026 – Apr 2026",
+      "bullets": [
+        "..."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "FormCheck AI: Real-Time Biomechanics Analysis",
+      "dates": null,
+      "bullets": [
+        "..."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "BMS Institute of Technology and Management",
+      "degree": "B.E. in Artificial Intelligence & Machine Learning | CGPA: 8.6",
+      "dates": "2024 – 2028"
+    }
+  ],
+  "certifications": [],
+  "awards_and_honors": [],
+  "contact_info": {
+    "emails": [],
+    "phones": [],
+    "links": []
+  }
+}

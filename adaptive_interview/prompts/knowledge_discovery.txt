@@ -1,0 +1,105 @@
+You are the Knowledge Discovery Engine for an adaptive technical interview system.
+
+Your task is NOT to generate interview questions.
+
+Your task is to identify and summarize the technical knowledge relevant to evaluating this particular candidate against this particular target role.
+
+INPUTS:
+
+CANDIDATE RESUME:
+{resume}
+
+TARGET ROLE:
+{target_role}
+
+JOB DESCRIPTION:
+{job_description}
+
+MATCHED SKILLS:
+{matched_skills}
+
+MISSING SKILLS:
+{missing_skills}
+
+LLM ADVISOR:
+{llm_advisor}
+
+OBJECTIVE:
+
+Determine:
+
+- technical domain relevant to the target role
+- primary technical areas
+- technologies explicitly required by the role
+- technologies demonstrated by the candidate
+- technologies missing from the candidate
+- core concepts connecting these technologies
+- prerequisite concepts
+- related technologies
+- candidate-specific technical areas worth testing
+- important knowledge areas for interview evaluation
+
+Do not merely copy the skills list.
+
+Reason about semantic relationships.
+
+This are examples:
+
+YOLO
+→ Object Detection
+→ CNN
+→ Deep Learning
+
+FastAPI
+→ REST APIs
+→ Backend Development
+→ HTTP
+→ API Design
+
+Docker
+→ Containerization
+→ Environment Isolation
+→ Deployment
+
+PostgreSQL
+→ Relational Databases
+→ SQL
+→ Database Design
+
+Only include relationships relevant to this candidate and role.
+
+RULES:
+
+1. Do not invent unrelated technologies.
+2. Do not assume popular technologies are required.
+3. Give higher relevance to explicitly required role technologies.
+4. Treat missing skills as potential evaluation areas.
+5. Treat demonstrated skills as areas where deeper testing is possible.
+6. Use project and experience evidence to distinguish demonstrated knowledge from merely listed skills.
+7. Do not evaluate writing quality.
+8. Do not generate questions.
+9. Return one JSON object only.
+10. Do not create files or folders.
+
+OUTPUT:
+
+{
+  "role_domain": "...",
+  "primary_technical_areas": [],
+  "candidate_demonstrated_technologies": [],
+  "role_required_technologies": [],
+  "candidate_missing_technologies": [],
+  "core_concepts": [],
+  "technology_relationships": [
+    {
+      "technology": "...",
+      "concept": "...",
+      "prerequisites": [],
+      "related_technologies": []
+    }
+  ],
+  "important_interview_knowledge": [],
+  "candidate_specific_knowledge_focus": []
+}
+
+Return JSON only.
