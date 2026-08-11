@@ -16,7 +16,7 @@ google-generativeai
 Jinja2
 weasyprint
 #for mac 
-#pango
+pango
 <<<<<<< HEAD
 
 =======

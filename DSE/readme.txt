@@ -75,3 +75,31 @@ The algorithm saw that number and essentially panicked, thinking: "There is text
 
 The Lesson: Standard deviation is "dumb" to the context of resume design. 
 It aggressively punishes standard, harmless formatting like right-aligned dates or centered headers.
+
+
+
+okay to fix this, we need to stop measuring how spread out the data is and 
+rather how concentrated it is, against a baseline 
+
+todo this we need to first filter the data -> 
+If a piece of text is very short (under 25 characters) 
+AND sits way on the right side of the page ($x_0 > 350$), it is just a date or location. Ignore it entirely.
+
+
+
+2. Anchor the Primary Margin
+Once the noise is filtered out,
+we look at all the remaining text blocks and find the absolute minimum value (in your case, 42.75). 
+We lock this in as the Primary Left Margin.  
+
+
+3. The Indentation Buffer
+We know that bullet points are indented slightly to the right of the headers. 
+If the margin is 42, a bullet point might be at 58. We create a "safe zone" of 45 points to the right of the Primary Margin.  
+
+
+4. The Density RatioFinally,
+ we count how many text blocks start inside that safe zone, 
+and divide it by the total number of text blocks to get a percentage.
+In a true two-column resume: 50% of the paragraphs will start inside the safe zone, and 50% will start in the second column outside the safe zone. 
+The ratio will be 0.50. We flag it as "Bad."In your resume: Once we ignored the date, 100% of your paragraphs and bullet points started within the safe zone. The ratio is 1.0 (100%). We flag it as "Good."  

@@ -52,46 +52,62 @@ class ResumeAuditor:
 
     def calculate_structural_health(self, raw_sections: List[Dict[str, Any]]) -> Dict[str, Any]:
         """
-        Pure Python Deterministic Check:
-        Calculates the standard deviation of x0 coordinates to detect multi-column layout issues.
+        Robust Deterministic Structural Check:
+        Measures the percentage of content blocks aligned near the primary left margin.
+        Ignores right-aligned dates and centered header titles.
         """
-        x0_list = []
+        body_x0s = []
         
         for item in raw_sections:
-            if isinstance(item, dict) and "x0" in item and item.get("class") != "section-header":
-                x0_list.append(item["x0"])
+            if not isinstance(item, dict):
+                continue
+            text = item.get("text", "").strip()
+            x0 = item.get("x0")
+            
+            if not text or x0 is None:
+                continue
+                
+            # Filter out right-aligned short metadata (e.g., dates like "2024 – 2028")
+            if len(text) < 25 and x0 > 350:
+                continue
+                
+            body_x0s.append(x0)
 
-        # Edge-case handling: If insufficient blocks extracted
-        if len(x0_list) < 2:
-            return {
-                "score": 85,
-                "status": "Good",
-                "feedback": "Standard document layout detected with consistent margins."
-            }
-
-        # Calculate standard deviation of starting horizontal positions
-        alignment_variance = stdev(x0_list)
-        print(alignment_variance,"\n")
-
-        if alignment_variance < 40:
+        # Fallback if text is extremely sparse
+        if len(body_x0s) < 3:
             return {
                 "score": 90,
                 "status": "Good",
+                "feedback": "Standard single-column layout detected."
+            }
+
+        # 1. Identify the primary left margin (smallest x0 among valid body items)
+        primary_margin = min(body_x0s)
+        
+        # 2. Count lines starting near primary margin (within 45pt to include bullet indents)
+        margin_aligned_count = sum(1 for x0 in body_x0s if (x0 - primary_margin) <= 45)
+        
+        # 3. Compute ratio of left-aligned text blocks
+        alignment_ratio = margin_aligned_count / len(body_x0s)
+
+        if alignment_ratio >= 0.80:
+            return {
+                "score": 95,
+                "status": "Good",
                 "feedback": "Your resume uses a clean, single-column layout that ATS parsers can easily read."
             }
-        elif alignment_variance <= 80:
+        elif alignment_ratio >= 0.60:
             return {
-                "score": 70,
+                "score": 75,
                 "status": "Average",
-                "feedback": "Your layout has moderate indentation variance or aligned dates, but remains mostly readable."
+                "feedback": "Your layout has some indentation variance or mild sidebar elements, but remains mostly readable."
             }
         else:
             return {
                 "score": 40,
                 "status": "Bad",
-                "feedback": "Multiple columns or complex formatting detected. Older ATS engines will likely scramble this text."
+                "feedback": "Multiple columns or heavy sidebars detected. Many ATS engines will scramble this text."
             }
-
     def audit_resume(self, parsed_resume_json: Dict[str, Any], raw_sections: List[Dict[str, Any]]) -> Dict[str, Any]:
         
         # Step 1: Pre-calculate Structural Health via Python math

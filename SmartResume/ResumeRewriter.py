@@ -64,43 +64,46 @@ class ResumeRewriter:
             
         self.client = genai.Client(api_key=api_key)
 
-    def rewrite_resume(self, parsed_resume_json: Dict[str, Any]) -> Dict[str, Any]:
+    def rewrite_resume(self, parsed_resume_json: Dict[str, Any],scorecard_json:Dict[str, Any]) -> Dict[str, Any]:
        
-        
         prompt = f"""
         You are an elite Technical Recruiter and Resume Engineer specializing in Software Engineering and AI. 
         Your objective is to rewrite the provided candidate resume JSON to maximize its impact for ATS systems and hiring managers.
 
         You must output a JSON object that strictly adheres to the requested schema. 
-        DO NOT alter the `name`, `contact_info`, or `education` data. Focus entirely on upgrading the content.
+        DO NOT alter the `name`, `contact_info`, or `education` data. Focus entirely on upgrading the `experience`, `projects`, and `summary` content.
+
+        --- DIAGNOSTIC SCORECARD CONTEXT ---
+        The candidate's resume was just audited. Use this diagnostic feedback to guide your highly targeted surgical edits:
+        {json.dumps(scorecard_json, indent=2)}
 
         --- CRITICAL REWRITE RULES ---
 
-        1. THE STAR METHOD (Action + Metric + Result)
+        1. THE STAR METHOD (Action + Context + Result)
         Rewrite every single string in the `bullets` arrays for both `experience` and `projects`. 
-        Do not write passive tasks like "Worked on X." You must write high-impact achievements: "Accomplished [X] as measured by [Y], by doing [Z]."
+        Do not write passive tasks. You must write high-impact achievements.
 
-        2. THE BRACKET STRATEGY (Anti-Hallucination)
-        You are strictly forbidden from inventing or hallucinating metrics, numbers, or scale. 
-        However, impact requires numbers. Whenever a bullet point lacks a quantifiable metric, you MUST inject a bolded placeholder bracket forcing the user to provide it.
-        Examples: 
-        - "...reducing inference latency by **[Insert %]**..."
-        - "...trained on a dataset of **[Insert Number]** images..."
-        - "...achieving an accuracy of **[Insert Metric]**..."
+        2. THE TARGETED BRACKET STRATEGY (Anti-Hallucination)
+        You are strictly forbidden from inventing metrics. However, impact requires numbers.
+        Whenever a bullet lacks a quantifiable metric, you MUST inject a bolded placeholder bracket. 
+        CRITICAL: Read the `metric_density` feedback from the scorecard and create highly specific brackets based on it (e.g., **[Insert Latency Reduction in ms]** or **[Insert % Accuracy Improvement]** instead of a generic **[Insert %]**).
 
-        3. JARGON STANDARDIZATION (Elevate Vocabulary)
-        Upgrade generic terms to industry-standard technical jargon based on the context.
-        - Instead of "made a model smaller," use "applied post-training quantization."
-        - Instead of "put the app on a server," use "containerized and deployed the inference engine."
-        - Instead of "tracked faces," use "implemented live facial feature extraction and kinematic tracking."
+        3. LINGUISTIC VIGOR & JARGON (Elevate Vocabulary)
+        Upgrade generic terms to industry-standard technical jargon. Ensure every bullet starts with a powerful past-tense action verb (e.g., Architected, Engineered, Quantized). Look at the `linguistic_vigor` feedback to see what verbs need upgrading.
 
-        4. SUMMARY REWRITE
-        Rewrite the `summary` field to be a powerful, 2-sentence executive technical profile. Remove all generic fluff (e.g., "hardworking team player").
+        4. SEMANTIC INTEGRATION (Show, Don't Tell)
+        Read the `semantic_depth` feedback. If the auditor identified missing technologies (e.g., MongoDB, Git, PyTorch) that are in the skills list but missing from the bullets, seamlessly and logically weave them into the rewritten project or experience descriptions. Do not leave orphaned skills.
+
+        5. READABILITY & BREVITY
+        Read the `readability` feedback. Ensure no bullet point is a massive run-on sentence. Keep them dense, scannable, and eliminate redundant fluff. Maximum 200 characters per bullet point.
+
+        6. SUMMARY REWRITE
+        Rewrite the `summary` field to be a powerful, 2-sentence executive technical profile.
 
         --- RAW CANDIDATE RESUME ---
         {json.dumps(parsed_resume_json, indent=2)}
         """
-
+        
         try:
             # Generate the structured rewrite
             response = self.client.models.generate_content(
