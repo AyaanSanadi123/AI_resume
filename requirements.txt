@@ -17,6 +17,8 @@ Jinja2
 weasyprint
 #for mac 
 pango
+"pipecat-ai[deepgram]"
+"pipecat-ai[google]"
 <<<<<<< HEAD
 
 =======
