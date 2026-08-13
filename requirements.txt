@@ -19,6 +19,7 @@ weasyprint
 pango
 "pipecat-ai[deepgram]"
 "pipecat-ai[google]"
+"pipecat-ai[webrtc]"
 <<<<<<< HEAD
 
 =======
