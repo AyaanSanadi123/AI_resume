@@ -20,7 +20,7 @@ class InterviewSTTProvider:
         return DeepgramSTTService(
             api_key=api_key,
             # 'nova-2' is Deepgram's most accurate and fastest model for voice AI
-            model="nova-2", 
+            model="nova-3", 
             language="en",
             # WebRTC standard audio settings
             sample_rate=16000,
