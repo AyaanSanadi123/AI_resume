@@ -101,3 +101,39 @@ Transcribed text is sent to llm_service.py (referencing the cache_id).
 Gemini response text is streamed to tts_service.py.
 
 Generated raw audio bytes are sent straight back down the WebRTC stream to the browser speaker.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1. Next.js Frontend] 
+   ├── User uploads PDF/DOCX Resume
+   ├── User inputs/pastes GitHub Profile Link
+   └── User selects Target Role from a Database Dropdown
+         │
+         ▼ (HTTP POST /api/interview/init with multipart/form-data)
+         
+[2. FastAPI Backend (`router.py`)]
+   ├── Step A: Pass uploaded file to ATS/ TextExtraction (Extracts raw text + spatial coordinates)[cite: 2]
+   ├── Step B: Pass extracted text to ATS/ ResumeParser (Gemini 2.5 Flash + Pydantic schema -> parsed_resume JSON)[cite: 3]
+   ├── Step C: Scrape GitHub link (using our future scraper service) to extract repo/tech details
+   ├── Step D: Format both into clean Markdown via `context_builder.py`
+   ├── Step E: Instantiate Gemini Context Cache to save tokens and optimize latency
+   └── Step F: Register session in `session_manager.py` and return a `session_id`
+         │
+         ▼ (Frontend receives session_id)
+         
+[3. WebRTC Connection (`signaling.py`)]
+   ├── Frontend sends POST /api/interview/offer with `session_id` and SDP offer
+   ├── Backend maps `session_id` to the cached context & active session metadata
+   └── Pipecat pipeline spins up (Silero VAD ➔ Deepgram STT ➔ Gemini LLM + Cache ➔ Deepgram TTS)
