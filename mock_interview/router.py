@@ -1,5 +1,5 @@
 '''
-this acts like a all inclusive main file just for the mock-interview,
+this acts like a all inclusive router file just for the mock-interview,
 the point of this file is to not over crowded the actual main file...
 '''
 
@@ -13,6 +13,7 @@ from google.genai import types
 from mock_interview.server.signaling import router as signaling_router
 from mock_interview.server.session_manager import session_manager
 from mock_interview.core.context_builder import build_interview_context
+from mock_interview.services.github_scraper import GitHubScraper  # <--- Imported GitHub Scraper
 
 from ATS.text_extraction import TextExtraction
 from ATS.resume_parser import ResumeParser
@@ -24,15 +25,17 @@ interview_router.include_router(signaling_router)
 
 
 @interview_router.post("/api/interview/init", tags=["Interview Session Management"])
-async def initialize_interview_session(user_id: str = Form(...),
+async def initialize_interview_session(
+    user_id: str = Form(...),
     target_role: str = Form("AI/ML Engineer"),
     github_link: Optional[str] = Form(""),
-    resume: UploadFile = File(...)):
+    resume: UploadFile = File(...)
+):
     temp_path = None
     try:
         print(f"🚀 Initializing session for User: {user_id} | Role: {target_role}")
         extractor = TextExtraction(resume)
-        raw_text,sections = extractor.process()
+        raw_text, sections = await extractor.process()  # Await extraction pipeline
 
         api_key = os.getenv("GEMINI_API_KEY")
         if not api_key:
@@ -41,13 +44,16 @@ async def initialize_interview_session(user_id: str = Form(...),
         parser = ResumeParser(api_key=api_key)
         parsed_resume = parser.parse(raw_text=raw_text, sections=sections)
 
-
-        github_context_placeholder = f"GitHub Profile Provided: {github_link}" if github_link else "No GitHub link provided."
-
+        # Active GitHub Scraper Integration replacing the placeholder
+        github_context_markdown = "No GitHub link provided."
+        if github_link:
+            print(f"🔍 Triggering GitHub scraper for: {github_link}")
+            scraper = GitHubScraper(github_link)
+            github_context_markdown = await scraper.scrape_and_clean()
 
         formatted_context = build_interview_context(
             parsed_resume=parsed_resume,
-            github_context=github_context_placeholder,
+            github_context=github_context_markdown,
             target_role=target_role
         )
 
@@ -56,7 +62,7 @@ async def initialize_interview_session(user_id: str = Form(...),
             client = genai.Client(api_key=api_key)
             # Create a cached context using Gemini caching API
             cache = client.caches.create(
-                model="gemini-3.5-flash",
+                model="gemini-3.5-flash", # Updated model reference alignment
                 config=types.CreateCachedContentConfig(
                     contents=[formatted_context],
                     ttl="300s", # 5 minutes TTL per interview session room
@@ -79,7 +85,7 @@ async def initialize_interview_session(user_id: str = Form(...),
         return {
             "success": True,
             "session_id": session_id,
-            "message": "Interview session initialized successfully with ATS parsing and context caching.",
+            "message": "Interview session initialized successfully with ATS parsing, GitHub scraping, and context caching.",
             "candidate_name": parsed_resume.get("name", "Candidate")
         }
 

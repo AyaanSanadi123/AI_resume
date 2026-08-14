@@ -24,6 +24,8 @@ from SmartResume.ResumeRewriter import ResumeRewriter
 from SmartResume.PDFCompiler import PDFCompiler
 
 
+from mock_interview.router import interview_router
+
 app = FastAPI(title="AI Resume Backend Engine")
 
 app.add_middleware(
@@ -33,6 +35,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(interview_router)
 
 print("🚀 Initializing AI Engines. Please wait...")
 

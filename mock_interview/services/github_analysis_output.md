@@ -1,0 +1,21 @@
+=== GITHUB REPOSITORY ANALYSIS (AyaanSanadi123) ===
+- **Repository Name:** AI_resume
+  - **Language:** Python | **Stars:** 0 | **Topics:** None specified
+  - **Description:** None
+  - **Architecture / Notes:** Resume analyzer Browser-Based ATS Scorer: The app extracts text from an uploaded PDF and runs a local similarity check against a target job description, highlighting missing keywords. Adaptive Interview Generation: Instead of static questions, the system generates a custom question bank based on the resume's identified weaknesses and the specific job role. Multi-Modal Interview Interface: A real-time video/audio interface where an AI avatar or voice asks questions, and the user answers via microphone. Confidence & Technical Evaluator: The system grades technical accuracy based on the transcript, but also evaluates "confidence" by analyzing speech pacing, filler words (um, ah), and eye contact via the webcam. Actionable Resource Dashboard: A post-interview screen that links to specific learning materials (like LeetCode problems or communication exercises) based on where the user struggled. personal ideas 1. resume templates -> auto improves resume templates, rewrites entire resume to ma...
+- **Repository Name:** dependancy_parser
+  - **Language:** Python | **Stars:** 0 | **Topics:** None specified
+  - **Description:** None
+  - **Architecture / Notes:** No README.
+- **Repository Name:** word2vec
+  - **Language:** Python | **Stars:** 0 | **Topics:** None specified
+  - **Description:** None
+  - **Architecture / Notes:** # Word2Vec from Scratch ### Skip-Gram with Negative Sampling (SGNS) > A complete end-to-end implementation of the landmark **2013 Word2Vec** paper, > **"Distributed Representations of Words and Phrases and their Compositionality"** > by **Tomas Mikolov et al.** Built completely from scratch using a **high-performance C training engine** and a **lightweight Python inference API** that emulates the core functionality of `gensim`. --- ## Features - ⚡ High-performance training engine written in C and Python - 🧠 Skip-Gram with Negative Sampling (SGNS) - 📚 Streaming dataset preprocessing pipeline - 🎯 Vocabulary construction & frequency-based subsampling - 🔍 Fast cosine similarity search - ➕ Word analogies via vector arithmetic - 🎲 Odd-one-out detection - 🐍 Lightweight Python inference library (NumPy only) --- # Background The original Word2Vec paper transformed Natural Language Processing by replacing sparse one-hot word representations with dense vector embeddings learned directly from mass...
+- **Repository Name:** openended
+  - **Language:** C | **Stars:** 0 | **Topics:** None specified
+  - **Description:** None
+  - **Architecture / Notes:** No README.
+- **Repository Name:** ada
+  - **Language:** C | **Stars:** 0 | **Topics:** None specified
+  - **Description:** None
+  - **Architecture / Notes:** No README.
