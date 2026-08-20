@@ -24,7 +24,7 @@ load_dotenv()
 
 class SessionManager:
     def __init__(self):
-        self.__sessions : Dict[str,Dict[str,Any]] = {} # {session_id : {meta_data}}
+        self._sessions : Dict[str,Dict[str,Any]] = {} # {session_id : {meta_data}}
 
     def create_session(self,user_id : str, cache_name : Optional[str] = None)-> str:
         session_id = str(uuid.uuid4())
