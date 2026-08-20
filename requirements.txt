@@ -22,10 +22,7 @@ pango
 "pipecat-ai[webrtc]"
 aiortc
 python-multipart
-<<<<<<< HEAD
 
-=======
->>>>>>> 3adf13550c4e89a92d6ae59cf03c68af2c88621f
 # added for adaptive_interview
 pydantic
 python-dotenv
