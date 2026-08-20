@@ -4,7 +4,7 @@ speech to text
 
 import os
 from dotenv import load_dotenv
-from pipecat.services.deepgram import DeepgramSTTService
+from pipecat.services.deepgram.stt import DeepgramSTTService
 
 load_dotenv()
 

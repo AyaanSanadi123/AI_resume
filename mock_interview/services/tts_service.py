@@ -1,7 +1,7 @@
 
 import os
 from dotenv import load_dotenv
-from pipecat.services.deepgram import DeepgramTTSService
+from pipecat.services.deepgram.tts import DeepgramTTSService
 
 load_dotenv()
 

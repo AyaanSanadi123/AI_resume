@@ -3,7 +3,7 @@ import os
 from dotenv import load_dotenv
 from google import genai
 from google.genai import types
-from pipecat.services.google import GoogleLLMService
+from pipecat.services.google.llm import GoogleLLMService
 
 load_dotenv()
 
