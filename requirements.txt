@@ -20,6 +20,8 @@ pango
 "pipecat-ai[deepgram]"
 "pipecat-ai[google]"
 "pipecat-ai[webrtc]"
+aiortc
+python-multipart
 <<<<<<< HEAD
 
 =======

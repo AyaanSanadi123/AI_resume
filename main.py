@@ -9,7 +9,10 @@ from fastapi.middleware.cors import CORSMiddleware
 if platform.system() == "Windows":
     os.environ["PADDLE_PDX_ENABLE_MKLDNN_BYDEFAULT"] = "0"
     os.environ["FLAGS_use_mkldnn"] = "0"
-
+    try:
+        os.add_dll_directory(r"D:\dependencies\msys2\ucrt64\bin")
+    except Exception as e:
+        print(f"⚠️ Warning: Could not add DLL directory: {e}")
 
 
 from ATS.text_extraction import TextExtraction
@@ -42,7 +45,7 @@ print("🚀 Initializing AI Engines. Please wait...")
 
 # setting up the ATS 
 parser = ResumeParser()
-matcher = SemanticMatcher()
+matcher = SemanticMatcher(db_path="ATS/data/job_dataset.json")
 advisor =  LLMAdvisor()
 
 # setting up DSE engine 
@@ -50,12 +53,21 @@ auditor = ResumeAuditor()
 
 # setting up smart resume 
 rewriter = ResumeRewriter()
-compiler = PDFCompiler(template_dir=".")
+compiler = PDFCompiler(template_dir="SmartResume/")
 
 print("✅ All Engines Online.")
 
 
 # route-1 the ATS pipeline 
+@app.get("/api/ats/roles")
+async def get_available_roles():
+    try:
+        roles = [title.title() for title in matcher.job_db.keys()]
+        return JSONResponse(content={"roles": sorted(roles)})
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 @app.post("/api/ats/analyze")
 async def analyze_ats_match(file: UploadFile = File(...),target_role: str = Form(...)):
     try:

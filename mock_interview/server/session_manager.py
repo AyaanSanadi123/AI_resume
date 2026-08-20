@@ -80,3 +80,6 @@ class SessionManager:
             # 3. Remove from active store
             del self._sessions[session_id]
             print(f"🧹 Session {session_id} successfully wiped from memory.")
+
+
+session_manager = SessionManager()
